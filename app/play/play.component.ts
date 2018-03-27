@@ -28,6 +28,10 @@ export class PlayComponent implements OnInit {
 
   }
 
+  pageLoaded() {
+    console.log("loaded");
+  }
+
   ngOnInit() {
     const _deviceType = platformModule.device.deviceType;
     const _gridLayout = <GridLayout>this.gridLayout.nativeElement;

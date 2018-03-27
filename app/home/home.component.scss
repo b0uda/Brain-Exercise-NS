@@ -1,6 +1,7 @@
 @import "./home.component-tablet.scss";
 @import "./home.component-phone.scss";
-
-GridLayout{
-    background-color: #BDBDBD;
+GridLayout {
+    font-family: "IndieFlower";
 }
+
+.landscape :host GridLayout {}

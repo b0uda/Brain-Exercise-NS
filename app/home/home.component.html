@@ -4,39 +4,43 @@ Feel free to customize layouts and components to change how the tab view looks.
 -->
 <GridLayout #gridLayout class="page page-content">
 
-  <StackLayout>
+    <StackLayout>
 
-      <!-- Title -->
-      <StackLayout class="container_title" orientation="horizontal">
-          <Image class="brain_training" src="res://brain_training"></Image>
-          <Label class="welcome_msg text-primary" text="Welcome to IQ Test" textWrap="true"></Label>
-      </StackLayout>
+        <!-- Title -->
+        <FlexBoxLayout justifyContent="center" class="container_title">
+            <Image class="brain_training" src="res://brain_training"></Image>
+            <Label class="welcome_msg text-primary" text="Welcome to IQ Test" textWrap="true"></Label>
+        </FlexBoxLayout>
 
-      <!-- Guide Text -->
-     
-      <CardView margin="50" elevation="30" radius="5" >
-              <StackLayout>
-                  <Label class="card_title text-primary" text="Guide" textWrap="true"></Label>
-                      <Label  text="Each test consists of 15 questions, gradually increasing in difficulty."></Label>
-                      <Label  text="In each question, the subject is asked to identify the missing element that completes a pattern."
-                          textWrap="true"></Label>
-                      <Label text="Choose the correct answer to go to the next question." textWrap="true"></Label>
-                      <Label text="This test is supposed to assess your intellectual potentiel, not your performance under stress. Therefore, there is no time limit but the Estimated time is 4 minutes. "
-                          textWrap="true"></Label>
-                          <Image horizontalAlignment="right" class="brain_book" src="res://brain_book"></Image>
-                  </StackLayout>
-                  
-                  
-          </CardView>
+        <!-- Guide Text -->
 
-          <!-- Buttons -->
+        <CardView margin="10" elevation="30" radius="5">
+            <StackLayout>
+                <Label class="card_title text-primary" text="Guide" textWrap="true"></Label>
+                <Label text="Each test consists of 15 questions, gradually increasing in difficulty."></Label>
+                <Label text="In each question, the subject is asked to identify the missing element that completes a pattern." textWrap="true"></Label>
+                <Label text="Choose the correct answer to go to the next question." textWrap="true"></Label>
+                <Label text="This test is supposed to assess your intellectual potentiel, not your performance under stress. Therefore, there is no time limit but the Estimated time is 4 minutes. "
+                    textWrap="true"></Label>
+                <Image horizontalAlignment="right" class="brain_book" src="res://brain_book"></Image>
+            </StackLayout>
 
-          <Button class="btn btn-primary" text="ALPHABET" (tap)="startAlphabet()"></Button>
 
-          <Button class="btn btn-primary" text="NUMERICAL" (tap)="startNumerical()"></Button>
+        </CardView>
 
-          <Button class="btn btn-primary" text="SYMBOL" (tap)="startSymbol()"></Button>
-          
+        <!-- Buttons -->
 
-  </StackLayout>
+        <StackLayout #containerBtn class="container_btn">
+
+
+            <Button class="btn btn-primary" text="ALPHABET" (tap)="startAlphabet()"></Button>
+
+            <Button class="btn btn-primary" text="NUMERICAL" (tap)="startNumerical()"></Button>
+
+            <Button class="btn btn-primary" text="SYMBOL" (tap)="startSymbol()"></Button>
+
+
+        </StackLayout>
+
+    </StackLayout>
 </GridLayout>
