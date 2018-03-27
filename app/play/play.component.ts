@@ -2,6 +2,8 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import * as elementRegistryModule from "nativescript-angular/element-registry";
 import * as platformModule from "tns-core-modules/platform";
 
+import { screen } from "platform";
+
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { Image } from "ui/image";
@@ -31,15 +33,14 @@ export class PlayComponent implements OnInit {
     const _gridLayout = <GridLayout>this.gridLayout.nativeElement;
     _gridLayout.className = _deviceType.toLowerCase();
 
-
     const _question = <Label>this.label.nativeElement;
     console.log(<Label>this.label.nativeElement);
-    _question.left = 100;
+    _question.top = screen.mainScreen.heightPixels / 4;
 
-    const _questionImg = <Image>this.image.nativeElement;
-    const x = _questionImg.getLocationOnScreen;
-    console.log("coordinate : " + x);
+    // const _questionImg = <Image>this.image.nativeElement;
+    // const x = _questionImg.getActualSize().height;
 
+    console.log("heigth : " + screen.mainScreen.heightPixels / 4);
   }
 
 }

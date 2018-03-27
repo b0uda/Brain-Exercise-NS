@@ -13,9 +13,22 @@
 .tablet .question_text {
     color: white;
     font-size: 64;
+    text-align: center;
+    width: 100%;
 }
 
 .tablet .panel_answer {
     width: 50%;
     height: 50%;
+}
+
+.tablet .answer_0,
+.tablet .answer_1,
+.tablet .answer_2,
+.tablet .answer_3 {
+    font-size: 32;
+    color: white;
+    width: 50%;
+    text-align: center;
+    margin-top: 25%;
 }
