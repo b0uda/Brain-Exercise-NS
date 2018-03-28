@@ -5,9 +5,9 @@ import { HomeComponent } from "./home/home.component";
 import { PlayComponent } from "./play/play.component";
 
 const routes: Routes = [
-    { path: "home" , component: HomeComponent },
-    { path: "play" , component: PlayComponent },
-    { path: "", redirectTo: "/home", pathMatch: "full" },
+    { path: "home", component: HomeComponent },
+    { path: "play", component: PlayComponent },
+    { path: "", redirectTo: "/play", pathMatch: "full" },
     { path: "tabs", loadChildren: "./tabs/tabs.module#TabsModule" }
 ];
 

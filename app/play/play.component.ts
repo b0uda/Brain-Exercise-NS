@@ -20,7 +20,7 @@ import { EventData } from "data/observable";
 })
 export class PlayComponent implements OnInit {
   @ViewChild("gridLayout") gridLayout: ElementRef;
-  @ViewChild("label") label: ElementRef;
+  @ViewChild("question") question: ElementRef;
   @ViewChild("image") image: ElementRef;
   router;
 
@@ -37,14 +37,13 @@ export class PlayComponent implements OnInit {
     const _gridLayout = <GridLayout>this.gridLayout.nativeElement;
     _gridLayout.className = _deviceType.toLowerCase();
 
-    const _question = <Label>this.label.nativeElement;
-    console.log(<Label>this.label.nativeElement);
-    _question.top = screen.mainScreen.heightPixels / 4;
+    const _question = <Label>this.question.nativeElement;
+    console.log(<Label>this.question.nativeElement);
+    // _question.top = screen.mainScreen.heightPixels / 4;
 
     // const _questionImg = <Image>this.image.nativeElement;
     // const x = _questionImg.getActualSize().height;
 
-    console.log("heigth : " + screen.mainScreen.heightPixels / 4);
   }
 
 }
