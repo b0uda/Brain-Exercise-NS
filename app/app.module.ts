@@ -4,6 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { PlayComponent } from "./play/play.component";
+import { QuestionsService } from "./questions.service";
 
 @NgModule({
     bootstrap: [
@@ -17,6 +18,9 @@ import { PlayComponent } from "./play/play.component";
         AppComponent,
         HomeComponent,
         PlayComponent
+    ],
+    providers: [
+        QuestionsService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
