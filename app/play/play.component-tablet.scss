@@ -1,5 +1,5 @@
 .tablet {
-    background-image: url('res://play_background');
+    background-image: url('res://cartoon_background');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -22,9 +22,8 @@
 }
 
 .tablet .panel_answer {
-    width: 40%;
-    height: 35%;
-    margin-top: 10%;
+    height: 40%;
+    margin-top: 60%;
 }
 
 .tablet .answer_0,
@@ -35,5 +34,5 @@
     color: black;
     width: 50%;
     text-align: center;
-    margin-top: 25%;
+    margin-top: 85%;
 }

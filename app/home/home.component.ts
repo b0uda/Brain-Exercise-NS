@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
     if (args.landscape) {
       // Do something landscap-y
       console.log("landscape");
-      this.stackBtn.orientation = "horizontal";
 
       return;
     }
@@ -42,7 +41,7 @@ export class HomeComponent implements OnInit {
     // Do something portrait-y
     // Assume this includes updating boundProperty on this module's scope
     console.log("portrait");
-    this.stackBtn.orientation = "vertical";
+
   }
 
   ngOnInit() {
