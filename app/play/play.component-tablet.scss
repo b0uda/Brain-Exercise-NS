@@ -3,7 +3,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    font-family: "Chalkduster";
+}
+
+.tablet .question_number {
+    color: white;
+    font-size: 64;
+    background-color: black;
 }
 
 .tablet .panel_question {
@@ -18,7 +23,9 @@
     font-size: 58;
     text-align: center;
     width: 100%;
-    margin-top: 20%;
+    margin-top: 25%;
+    font-family: "PermanentMarker-Regular";
+    color: rgb(44, 121, 172);
 }
 
 .tablet .panel_answer {
@@ -64,9 +71,11 @@
 }
 
 .tablet .answer_label {
-    font-size: 38;
+    font-size: 42;
+    font-weight: bold;
     color: black;
     width: 50%;
     text-align: center;
-    margin-top: 85%;
+    margin-top: 90%;
+    font-family: "PPETRIAL";
 }

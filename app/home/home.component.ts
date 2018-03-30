@@ -68,7 +68,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-
   // Change Buttons Layout if orientation Changed
   orientationChangedCallback(args) {
     if (args.landscape) {

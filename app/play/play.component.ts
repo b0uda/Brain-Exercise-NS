@@ -24,6 +24,8 @@ import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/an
 
 const tnsfx = require("nativescript-effects");
 
+const orientation = require("nativescript-orientation");
+
 @Component({
   moduleId: module.id,
   selector: "app-play",
@@ -95,11 +97,18 @@ export class PlayComponent implements OnInit {
     this.answerL2 = <Label>this.answerLabel2.nativeElement;
     this.answerL3 = <Label>this.answerLabel3.nativeElement;
 
+    orientation.disableRotation();
+
   }
 
-  nextQuestion(eventData: EventData, answer: number): void {
+  nextQuestion(answer: number): void {
 
     console.log(`answer ${answer}`);
+
+    // this.answerI0.removeEventListener("tap");
+    // this.answerI1.removeEventListener("tap");
+    // this.answerI2.removeEventListener("tap");
+    // this.answerI3.removeEventListener("tap");
 
     switch (answer) {
       case 0:
@@ -160,6 +169,20 @@ export class PlayComponent implements OnInit {
           duration: 200,
           curve: AnimationCurve.easeInOut
         });
+
+        // this.answerI0.addEventListener("tap", () => {
+        //   this.nextQuestion(0);
+        // });
+        // this.answerI1.addEventListener("tap", () => {
+        //   this.nextQuestion(1);
+        // });
+        // this.answerI2.addEventListener("tap", () => {
+        //   this.nextQuestion(2);
+        // });
+        // this.answerI3.addEventListener("tap", () => {
+        //   this.nextQuestion(3);
+        // });
+
       }, 1700);
 
     } else {

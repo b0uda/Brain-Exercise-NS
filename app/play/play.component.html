@@ -4,6 +4,9 @@
 
     <StackLayout>
 
+      <!-- <Label class="question_number" [text]="questionIndex+1" textWrap="true"></Label> -->
+
+
       <AbsoluteLayout>
         <Image #image class="panel_question" stretch="fill" src="res://board"></Image>
         <Label #questionLabel class="question_text" [text]="questionCurrent.q" textWrap="true"></Label>
@@ -13,19 +16,17 @@
 
 
       <GridLayout columns="*,*,*,*" rows="*">
-        <Image #answerImg0 (tap)="nextQuestion($event , 0)" col="0" stretch="fill" row="0" class="panel_answer" src="res://answer0"></Image>
+        <Image #answerImg0 (tap)="nextQuestion(0)" col="0" stretch="fill" row="0" class="panel_answer" src="res://answer0"></Image>
         <Label #answerLabel0 [text]="questionCurrent.choices[0]" class="answer_label" col="0" row="0" text="A" textWrap="true"></Label>
 
-        <Image #answerImg1 (tap)="nextQuestion($event ,1)" class="answer_img answer_img_1" col="1" stretch="fill" row="0" class="panel_answer"
+        <Image #answerImg1 (tap)="nextQuestion(1)" class="answer_img answer_img_1" col="1" stretch="fill" row="0" class="panel_answer"
           src="res://answer1"></Image>
         <Label #answerLabel1 [text]="questionCurrent.choices[1]" class="answer_label" col="1" row="0" text="A" textWrap="true"></Label>
 
-        <Image #answerImg2 (tap)="nextQuestion($event ,2)" class="answer_img_2" col="2" stretch="fill" row="0" class="panel_answer"
-          src="res://answer2"></Image>
+        <Image #answerImg2 (tap)="nextQuestion(2)" class="answer_img_2" col="2" stretch="fill" row="0" class="panel_answer" src="res://answer2"></Image>
         <Label #answerLabel2 [text]="questionCurrent.choices[2]" class="answer_label" col="2" row="0" text="A" textWrap="true"></Label>
 
-        <Image #answerImg3 (tap)="nextQuestion($event ,3)" class="answer_img_3" col="3" stretch="fill" row="0" class="panel_answer"
-          src="res://answer3"></Image>
+        <Image #answerImg3 (tap)="nextQuestion(3)" class="answer_img_3" col="3" stretch="fill" row="0" class="panel_answer" src="res://answer3"></Image>
         <Label #answerLabel3 [text]="questionCurrent.choices[3]" class="answer_label" col="3" row="0" text="A" textWrap="true"></Label>
 
       </GridLayout>
