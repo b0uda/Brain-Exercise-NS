@@ -143,11 +143,13 @@ export class PlayComponent implements OnInit {
 
       // todo TextChange Animation
 
-      this._questionLabel.animate({
-        opacity: 0,
-        duration: 200,
-        curve: AnimationCurve.easeInOut
-      });
+      setTimeout(() => {
+        this._questionLabel.animate({
+          opacity: 0,
+          duration: 200,
+          curve: AnimationCurve.easeInOut
+        });
+      }, 1000);
 
       // change the text of question and show it after fade
       setTimeout(() => {
@@ -158,7 +160,7 @@ export class PlayComponent implements OnInit {
           duration: 200,
           curve: AnimationCurve.easeInOut
         });
-      }, 700);
+      }, 1700);
 
     } else {
       dialogs.alert(`you have a score of : ${this.score}`).then(() => {
@@ -173,28 +175,28 @@ export class PlayComponent implements OnInit {
     const a1: AnimationDefinition = {
       target: this.answerL0,
       opacity: 1,
-      duration: 700
+      duration: 200
     };
     definitions.push(a1);
 
     const a2: AnimationDefinition = {
       target: this.answerL1,
       opacity: 1,
-      duration: 700
+      duration: 200
     };
     definitions.push(a2);
 
     const a3: AnimationDefinition = {
       target: this.answerL2,
       opacity: 1,
-      duration: 700
+      duration: 200
     };
     definitions.push(a3);
 
     const a4: AnimationDefinition = {
       target: this.answerL3,
       opacity: 1,
-      duration: 700
+      duration: 200
     };
     definitions.push(a4);
 
@@ -214,28 +216,28 @@ export class PlayComponent implements OnInit {
     const a1: AnimationDefinition = {
       target: this.answerL0,
       opacity: 0,
-      duration: 700
+      duration: 200
     };
     definitions.push(a1);
 
     const a2: AnimationDefinition = {
       target: this.answerL1,
       opacity: 0,
-      duration: 700
+      duration: 200
     };
     definitions.push(a2);
 
     const a3: AnimationDefinition = {
       target: this.answerL2,
       opacity: 0,
-      duration: 700
+      duration: 200
     };
     definitions.push(a3);
 
     const a4: AnimationDefinition = {
       target: this.answerL3,
       opacity: 0,
-      duration: 700
+      duration: 200
     };
     definitions.push(a4);
 
@@ -291,7 +293,7 @@ export class PlayComponent implements OnInit {
     }, 1000);
     setTimeout(() => {
       this.showAnswer();
-    }, 1700);
+    }, 1200);
 
   }
 

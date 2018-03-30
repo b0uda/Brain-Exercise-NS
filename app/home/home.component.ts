@@ -37,9 +37,10 @@ export class HomeComponent implements OnInit {
 
   startAlphabet($event: EventData) {
 
-
+    this.alphabet.className = "mode animate_big";
 
     setTimeout(() => {
+      this.alphabet.className = "mode";
       this.routerExtensions.navigate(["/play"], { clearHistory: false });
     }, 1000);
 
@@ -47,9 +48,10 @@ export class HomeComponent implements OnInit {
 
   startNumber($event: EventData) {
 
-
+    this.number.className = "mode animate_big";
 
     setTimeout(() => {
+      this.number.className = "mode";
       this.routerExtensions.navigate(["/play"], { clearHistory: false });
     }, 1000);
 
@@ -57,9 +59,10 @@ export class HomeComponent implements OnInit {
 
   startSymbol($event: EventData) {
 
-
+    this.symbol.className = "mode animate_big";
 
     setTimeout(() => {
+      this.number.className = "mode";
       this.routerExtensions.navigate(["/play"], { clearHistory: false });
     }, 1000);
 
