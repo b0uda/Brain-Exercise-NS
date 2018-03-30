@@ -20,6 +20,8 @@ import { GestureEventData, GestureTypes } from "ui/gestures";
 
 import { AnimationCurve } from "ui/enums";
 
+import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/animation";
+
 const tnsfx = require("nativescript-effects");
 
 @Component({
@@ -46,6 +48,7 @@ export class PlayComponent implements OnInit {
   answerI2: Image;
   answerI3: Image;
 
+  _questionLabel: Label;
   answerL0: Label;
   answerL1: Label;
   answerL2: Label;
@@ -74,7 +77,7 @@ export class PlayComponent implements OnInit {
     const _gridLayout = <GridLayout>this.gridLayout.nativeElement;
     _gridLayout.className = _deviceType.toLowerCase();
 
-    const _questionLabel = <Label>this.questionLabel.nativeElement;
+    this._questionLabel = <Label>this.questionLabel.nativeElement;
     // _question.top = screen.mainScreen.heightPixels / 4;
 
     const _questionImg = <Image>this.image.nativeElement;
@@ -119,64 +122,176 @@ export class PlayComponent implements OnInit {
         break;
     }
 
+    // Change Question Information after end of animation
+    setTimeout(() => {
+      this.nextQuestionLogic(answer);
+    }, 1000);
+
+  }
+
+  nextQuestionLogic(_answer: number) {
     // if there is next question
     if (this.questionIndex < this.questions.length - 1) {
 
       // if good answer
-      if (this.questionCurrent.a === answer) {
+      if (this.questionCurrent.a === _answer) {
         // console.log("xxx good answer");
         this.score++;
       } else {
         // console.log("xxx bad answer");
       }
 
-      this.questionIndex++;
-      this.questionCurrent = this.questions[this.questionIndex];
+      // todo TextChange Animation
+
+      this._questionLabel.animate({
+        opacity: 0,
+        duration: 200,
+        curve: AnimationCurve.easeInOut
+      });
+
+      // change the text of question and show it after fade
+      setTimeout(() => {
+        this.questionIndex++;
+        this.questionCurrent = this.questions[this.questionIndex];
+        this._questionLabel.animate({
+          opacity: 1,
+          duration: 200,
+          curve: AnimationCurve.easeInOut
+        });
+      }, 700);
 
     } else {
       dialogs.alert(`you have a score of : ${this.score}`).then(() => {
         this.routerExtensions.navigate(["/home"], { clearHistory: false });
       });
     }
+  }
 
+  showAnswer() {
+
+    const definitions = new Array<AnimationDefinition>();
+    const a1: AnimationDefinition = {
+      target: this.answerL0,
+      opacity: 1,
+      duration: 700
+    };
+    definitions.push(a1);
+
+    const a2: AnimationDefinition = {
+      target: this.answerL1,
+      opacity: 1,
+      duration: 700
+    };
+    definitions.push(a2);
+
+    const a3: AnimationDefinition = {
+      target: this.answerL2,
+      opacity: 1,
+      duration: 700
+    };
+    definitions.push(a3);
+
+    const a4: AnimationDefinition = {
+      target: this.answerL3,
+      opacity: 1,
+      duration: 700
+    };
+    definitions.push(a4);
+
+    const animationSet = new Animation(definitions);
+
+    animationSet.play().then(() => {
+      console.log("Animation finished");
+    })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }
+
+  hideAnswer() {
+
+    const definitions = new Array<AnimationDefinition>();
+    const a1: AnimationDefinition = {
+      target: this.answerL0,
+      opacity: 0,
+      duration: 700
+    };
+    definitions.push(a1);
+
+    const a2: AnimationDefinition = {
+      target: this.answerL1,
+      opacity: 0,
+      duration: 700
+    };
+    definitions.push(a2);
+
+    const a3: AnimationDefinition = {
+      target: this.answerL2,
+      opacity: 0,
+      duration: 700
+    };
+    definitions.push(a3);
+
+    const a4: AnimationDefinition = {
+      target: this.answerL3,
+      opacity: 0,
+      duration: 700
+    };
+    definitions.push(a4);
+
+    const animationSet = new Animation(definitions);
+
+    animationSet.play().then(() => {
+      console.log("Animation finished");
+    })
+      .catch((e) => {
+        console.log(e.message);
+      });
   }
 
   animateAnswer0() {
     this.answerI0.className = "panel_answer animate_bigger";
     setTimeout(() => {
       this.answerI0.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL0.className = "answer_label animate_bigger";
     setTimeout(() => {
       this.answerL0.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI1.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI1.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL1.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL1.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI2.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI2.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL2.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL2.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI3.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI3.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL3.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL3.className = "answer_label";
-    }, 3000);
+    }, 1000);
+
+    setTimeout(() => {
+      this.hideAnswer();
+    }, 1000);
+    setTimeout(() => {
+      this.showAnswer();
+    }, 1700);
 
   }
 
@@ -184,38 +299,38 @@ export class PlayComponent implements OnInit {
     this.answerI1.className = "panel_answer animate_bigger";
     setTimeout(() => {
       this.answerI1.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL1.className = "answer_label animate_bigger";
     setTimeout(() => {
       this.answerL1.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI0.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI0.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL0.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL0.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI2.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI2.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL2.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL2.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI3.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI3.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL3.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL3.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
   }
 
@@ -223,38 +338,38 @@ export class PlayComponent implements OnInit {
     this.answerI2.className = "panel_answer animate_bigger";
     setTimeout(() => {
       this.answerI2.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL2.className = "answer_label animate_bigger";
     setTimeout(() => {
       this.answerL2.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI0.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI0.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL0.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL0.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI1.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI1.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL1.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL1.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI3.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI3.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL3.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL3.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
   }
 
@@ -262,38 +377,38 @@ export class PlayComponent implements OnInit {
     this.answerI3.className = "panel_answer animate_bigger";
     setTimeout(() => {
       this.answerI3.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL3.className = "answer_label animate_bigger";
     setTimeout(() => {
       this.answerL3.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI0.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI0.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL0.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL0.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI1.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI1.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL1.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL1.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
     this.answerI2.className = "panel_answer animate_smaller";
     setTimeout(() => {
       this.answerI2.className = "panel_answer";
-    }, 3000);
+    }, 1000);
     this.answerL2.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerL2.className = "answer_label";
-    }, 3000);
+    }, 1000);
 
   }
 

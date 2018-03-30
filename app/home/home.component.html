@@ -4,22 +4,14 @@ Feel free to customize layouts and components to change how the tab view looks.
 -->
 <GridLayout #gridLayout class="page page-content">
 
-
-
-
-
-
-
     <!-- Buttons -->
 
     <FlexBoxLayout justifyContent="center" alignItems="flex-end" #containerBtn class="mode_container">
 
-        <Image class="mode" (tap)="startAlphabet()" src="res://alphabet"></Image>
-        <Image class="mode" (tap)="startNumerical()" src="res://numbers"></Image>
-        <Image class="mode" (tap)="startSymbol()" src="res://symbol"></Image>
-
+        <Image #alphabet class="mode" (tap)="startAlphabet()" src="res://alphabet"></Image>
+        <Image #number class="mode" (tap)="startNumber()" src="res://numbers"></Image>
+        <Image #symbol class="mode" (tap)="startSymbol()" src="res://symbol"></Image>
 
     </FlexBoxLayout>
-
 
 </GridLayout>
