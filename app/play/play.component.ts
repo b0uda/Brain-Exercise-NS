@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewChild, NgZone } from "@angular/core";
 import * as elementRegistryModule from "nativescript-angular/element-registry";
 import * as platformModule from "tns-core-modules/platform";
 
@@ -62,7 +62,11 @@ export class PlayComponent implements OnInit {
   questionIndex;
   score;
 
-  constructor(private routerExtensions: RouterExtensions, private questionService: QuestionsService) {
+  constructor(
+    private ngZone: NgZone,
+    private routerExtensions: RouterExtensions,
+    private questionService: QuestionsService) {
+
     this.questions = questionService.questions;
     this.questionIndex = 0;
     this.questionCurrent = this.questions[0];
@@ -105,10 +109,10 @@ export class PlayComponent implements OnInit {
 
     console.log(`answer ${answer}`);
 
-    // this.answerI0.removeEventListener("tap");
-    // this.answerI1.removeEventListener("tap");
-    // this.answerI2.removeEventListener("tap");
-    // this.answerI3.removeEventListener("tap");
+    this.answerI0.removeEventListener("tap");
+    this.answerI1.removeEventListener("tap");
+    this.answerI2.removeEventListener("tap");
+    this.answerI3.removeEventListener("tap");
 
     switch (answer) {
       case 0:
@@ -158,30 +162,35 @@ export class PlayComponent implements OnInit {
           duration: 200,
           curve: AnimationCurve.easeInOut
         });
+        this.questionIndex++;
+        this.questionCurrent = this.questions[this.questionIndex];
+        this.ngZone.run(() => {
+          // Do whatever you want here
+          console.log("xxx reload view");
+        });
       }, 1000);
 
       // change the text of question and show it after fade
       setTimeout(() => {
-        this.questionIndex++;
-        this.questionCurrent = this.questions[this.questionIndex];
+
         this._questionLabel.animate({
           opacity: 1,
           duration: 200,
           curve: AnimationCurve.easeInOut
         });
 
-        // this.answerI0.addEventListener("tap", () => {
-        //   this.nextQuestion(0);
-        // });
-        // this.answerI1.addEventListener("tap", () => {
-        //   this.nextQuestion(1);
-        // });
-        // this.answerI2.addEventListener("tap", () => {
-        //   this.nextQuestion(2);
-        // });
-        // this.answerI3.addEventListener("tap", () => {
-        //   this.nextQuestion(3);
-        // });
+        this.answerI0.addEventListener("tap", () => {
+          this.nextQuestion(0);
+        });
+        this.answerI1.addEventListener("tap", () => {
+          this.nextQuestion(1);
+        });
+        this.answerI2.addEventListener("tap", () => {
+          this.nextQuestion(2);
+        });
+        this.answerI3.addEventListener("tap", () => {
+          this.nextQuestion(3);
+        });
 
       }, 1700);
 
