@@ -1,0 +1,9 @@
+<StackLayout class="page">
+  <Label class="score" textWrap="true" [text]="score"></Label>
+
+  <StackLayout class="container_btn" orientation="horizontal">
+    <Image src="res://score_home" class="mode mode_first" (tap)="home()"></Image>
+    <Image src="res://score_correction" class="mode" (tap)="result()"></Image>
+  </StackLayout>
+
+</StackLayout>

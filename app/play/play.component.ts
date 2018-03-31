@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, NgZone } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewContainerRef, ViewChild, NgZone } from "@angular/core";
 import * as elementRegistryModule from "nativescript-angular/element-registry";
 import * as platformModule from "tns-core-modules/platform";
 
@@ -21,6 +21,10 @@ import { GestureEventData, GestureTypes } from "ui/gestures";
 import { AnimationCurve } from "ui/enums";
 
 import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/animation";
+
+import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
+import { HomeComponent } from "../home/home.component";
+import { ResultDialogComponent } from "../result-dialog/result-dialog.component";
 
 const tnsfx = require("nativescript-effects");
 
@@ -63,6 +67,8 @@ export class PlayComponent implements OnInit {
   score;
 
   constructor(
+    private modalService: ModalDialogService,
+    private viewContainerRef: ViewContainerRef,
     private ngZone: NgZone,
     private routerExtensions: RouterExtensions,
     private questionService: QuestionsService) {
@@ -71,6 +77,16 @@ export class PlayComponent implements OnInit {
     this.questionIndex = 0;
     this.questionCurrent = this.questions[0];
     this.score = 0;
+  }
+
+  show() {
+    const options: ModalDialogOptions = {
+      context: { score: this.score },
+      fullscreen: true,
+      viewContainerRef: this.viewContainerRef
+    };
+
+    this.modalService.showModal(ResultDialogComponent, options);
   }
 
   pageLoaded() {
@@ -113,6 +129,8 @@ export class PlayComponent implements OnInit {
     this.answerI1.removeEventListener("tap");
     this.answerI2.removeEventListener("tap");
     this.answerI3.removeEventListener("tap");
+
+    this.show();
 
     switch (answer) {
       case 0:

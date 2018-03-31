@@ -5,6 +5,9 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { PlayComponent } from "./play/play.component";
 import { QuestionsService } from "./questions.service";
+import { ResultDialogComponent } from "./result-dialog/result-dialog.component";
+
+import { ModalDialogService } from "nativescript-angular/modal-dialog";
 
 @NgModule({
     bootstrap: [
@@ -17,10 +20,13 @@ import { QuestionsService } from "./questions.service";
     declarations: [
         AppComponent,
         HomeComponent,
-        PlayComponent
+        PlayComponent,
+        ResultDialogComponent
+
     ],
     providers: [
-        QuestionsService
+        QuestionsService,
+        ModalDialogService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
