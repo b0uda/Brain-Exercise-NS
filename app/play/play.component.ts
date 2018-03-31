@@ -164,14 +164,14 @@ export class PlayComponent implements OnInit {
         });
         this.questionIndex++;
         this.questionCurrent = this.questions[this.questionIndex];
-        this.ngZone.run(() => {
-          // Do whatever you want here
-          console.log("xxx reload view");
-        });
       }, 1000);
 
       // change the text of question and show it after fade
       setTimeout(() => {
+        this.ngZone.run(() => {
+          // Do whatever you want here
+          console.log("xxx reload view!!!!");
+        });
 
         this._questionLabel.animate({
           opacity: 1,
@@ -192,7 +192,7 @@ export class PlayComponent implements OnInit {
           this.nextQuestion(3);
         });
 
-      }, 1700);
+      }, 1200);
 
     } else {
       dialogs.alert(`you have a score of : ${this.score}`).then(() => {
