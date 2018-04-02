@@ -41,7 +41,14 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.alphabet.className = "mode";
-      this.routerExtensions.navigate(["/play"], { clearHistory: false });
+      this.routerExtensions.navigate(["/play", false], {
+        clearHistory: false,
+        transition: {
+          name: "fade",
+          duration: 900,
+          curve: "easeOut"
+        }
+      });
     }, 1000);
 
   }
@@ -52,7 +59,14 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.number.className = "mode";
-      this.routerExtensions.navigate(["/play"], { clearHistory: false });
+      this.routerExtensions.navigate(["/play", false], {
+        clearHistory: false,
+        transition: {
+          name: "fade",
+          duration: 900,
+          curve: "easeOut"
+        }
+      });
     }, 1000);
 
   }
@@ -63,7 +77,14 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.number.className = "mode";
-      this.routerExtensions.navigate(["/play"], { clearHistory: false });
+      this.routerExtensions.navigate(["/play", false], {
+        clearHistory: false,
+        transition: {
+          name: "fade",
+          duration: 900,
+          curve: "easeOut"
+        }
+      });
     }, 1000);
 
   }

@@ -14,7 +14,7 @@ import { Page, Point } from "ui/page";
 import * as dialogs from "ui/dialogs";
 
 import { EventData } from "data/observable";
-import { IQuestion, QuestionsService } from "../questions.service";
+import { IAnswer, IQuestion, QuestionsService } from "../questions.service";
 
 import { GestureEventData, GestureTypes } from "ui/gestures";
 
@@ -25,6 +25,8 @@ import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/an
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { HomeComponent } from "../home/home.component";
 import { ResultDialogComponent } from "../result-dialog/result-dialog.component";
+
+import { ActivatedRoute } from "@angular/router";
 
 const tnsfx = require("nativescript-effects");
 
@@ -65,11 +67,16 @@ export class PlayComponent implements OnInit {
   questionCurrent: IQuestion;
   questionIndex;
   score;
+  questionIndicator: string;
+  playerAnswers: Array<IAnswer>;
+  playwerAnswerTemp: IAnswer;
+  correction: boolean;
 
   constructor(
     private modalService: ModalDialogService,
     private viewContainerRef: ViewContainerRef,
     private ngZone: NgZone,
+    private route: ActivatedRoute,
     private routerExtensions: RouterExtensions,
     private questionService: QuestionsService) {
 
@@ -77,6 +84,14 @@ export class PlayComponent implements OnInit {
     this.questionIndex = 0;
     this.questionCurrent = this.questions[0];
     this.score = 0;
+    this.questionIndicator = `Question ${this.questionIndex + 1}`;
+    this.playerAnswers = [];
+
+    this.route.params
+      .forEach((params) => { this.correction = params.correction; });
+
+    console.log(`correction bool ${this.correction}`);
+
   }
 
   show() {
@@ -121,16 +136,27 @@ export class PlayComponent implements OnInit {
 
   }
 
+  animateQuestionIndicator() {
+    this.questionIndicator = `Question ${this.questionIndex + 1}`;
+  }
+
   nextQuestion(answer: number): void {
 
     console.log(`answer ${answer}`);
+
+    // todo1
+    this.playwerAnswerTemp = { id: this.questionIndex, question: this.questionCurrent, playerAnswer: answer };
+    this.playerAnswers.push(this.playwerAnswerTemp);
 
     this.answerI0.removeEventListener("tap");
     this.answerI1.removeEventListener("tap");
     this.answerI2.removeEventListener("tap");
     this.answerI3.removeEventListener("tap");
 
-    this.show();
+    // if quiz finished show the score dialog
+    // this.show();
+
+    console.dir(this.playerAnswers);
 
     switch (answer) {
       case 0:
@@ -181,6 +207,7 @@ export class PlayComponent implements OnInit {
           curve: AnimationCurve.easeInOut
         });
         this.questionIndex++;
+        this.animateQuestionIndicator();
         this.questionCurrent = this.questions[this.questionIndex];
       }, 1000);
 
@@ -213,92 +240,13 @@ export class PlayComponent implements OnInit {
       }, 1200);
 
     } else {
+
+      // todo questions finished
+
       dialogs.alert(`you have a score of : ${this.score}`).then(() => {
-        this.routerExtensions.navigate(["/home"], { clearHistory: false });
+        // this.routerExtensions.navigate(["/home"], { clearHistory: false });
       });
     }
-  }
-
-  showAnswer() {
-
-    const definitions = new Array<AnimationDefinition>();
-    const a1: AnimationDefinition = {
-      target: this.answerL0,
-      opacity: 1,
-      duration: 200
-    };
-    definitions.push(a1);
-
-    const a2: AnimationDefinition = {
-      target: this.answerL1,
-      opacity: 1,
-      duration: 200
-    };
-    definitions.push(a2);
-
-    const a3: AnimationDefinition = {
-      target: this.answerL2,
-      opacity: 1,
-      duration: 200
-    };
-    definitions.push(a3);
-
-    const a4: AnimationDefinition = {
-      target: this.answerL3,
-      opacity: 1,
-      duration: 200
-    };
-    definitions.push(a4);
-
-    const animationSet = new Animation(definitions);
-
-    animationSet.play().then(() => {
-      console.log("Animation finished");
-    })
-      .catch((e) => {
-        console.log(e.message);
-      });
-  }
-
-  hideAnswer() {
-
-    const definitions = new Array<AnimationDefinition>();
-    const a1: AnimationDefinition = {
-      target: this.answerL0,
-      opacity: 0,
-      duration: 200
-    };
-    definitions.push(a1);
-
-    const a2: AnimationDefinition = {
-      target: this.answerL1,
-      opacity: 0,
-      duration: 200
-    };
-    definitions.push(a2);
-
-    const a3: AnimationDefinition = {
-      target: this.answerL2,
-      opacity: 0,
-      duration: 200
-    };
-    definitions.push(a3);
-
-    const a4: AnimationDefinition = {
-      target: this.answerL3,
-      opacity: 0,
-      duration: 200
-    };
-    definitions.push(a4);
-
-    const animationSet = new Animation(definitions);
-
-    animationSet.play().then(() => {
-      console.log("Animation finished");
-    })
-      .catch((e) => {
-        console.log(e.message);
-      });
   }
 
   animateAnswer0() {
@@ -338,12 +286,7 @@ export class PlayComponent implements OnInit {
       this.answerL3.className = "answer_label";
     }, 1000);
 
-    setTimeout(() => {
-      this.hideAnswer();
-    }, 1000);
-    setTimeout(() => {
-      this.showAnswer();
-    }, 1200);
+
 
   }
 

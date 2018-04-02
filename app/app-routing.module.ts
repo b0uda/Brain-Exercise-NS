@@ -7,9 +7,9 @@ import { ResultDialogComponent } from "./result-dialog/result-dialog.component";
 
 const routes: Routes = [
     { path: "home", component: HomeComponent },
-    { path: "play", component: PlayComponent },
+    { path: "play/:correction", component: PlayComponent },
     { path: "dialog", component: ResultDialogComponent },
-    { path: "", redirectTo: "/play", pathMatch: "full" },
+    { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "tabs", loadChildren: "./tabs/tabs.module#TabsModule" }
 ];
 

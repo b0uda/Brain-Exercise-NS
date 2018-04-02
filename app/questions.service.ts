@@ -4,14 +4,6 @@ import { Injectable } from "@angular/core";
 export class QuestionsService {
 
   questions: Array<IQuestion> = [
-    {
-      id: -1,
-      q: "Z L X J V H T F ? ?",
-      choices: ["R D", "S E", "R E", "Q D"],
-      a: 0,
-      rate: 0,
-      hint: "two series Z X V T ?\nand L J H F ?"
-    },
 
     {
       id: 0,
@@ -120,4 +112,10 @@ export interface IQuestion {
   a: number;
   rate: number;
   hint: string;
+}
+
+export interface IAnswer {
+  id: number;
+  playerAnswer: number;
+  question: IQuestion;
 }

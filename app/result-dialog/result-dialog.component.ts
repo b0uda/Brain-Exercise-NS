@@ -22,15 +22,14 @@ export class ResultDialogComponent implements OnInit {
   }
 
   home() {
-    console.log("xxxx");
-    this.routerExtensions.navigate(["/home"], { clearHistory: false });
+    this.routerExtensions.navigate(["/home"], { clearHistory: true });
     this.params.closeCallback();
 
   }
 
   result() {
     this.params.closeCallback();
-    this.routerExtensions.navigate(["/home"], { clearHistory: false });
+    this.routerExtensions.navigate(["/play", true], { clearHistory: true });
   }
 
   ngOnInit() {
