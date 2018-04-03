@@ -114,6 +114,8 @@ export class PlayComponent implements OnInit {
     this.questionIndex++;
     this.questionCurrent = this.questions[this.questionIndex];
 
+    this.animateQuestionIndicator();
+
     this.answerL0.className = "answer_label";
     this.answerL1.className = "answer_label";
     this.answerL2.className = "answer_label";
