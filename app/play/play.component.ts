@@ -213,7 +213,10 @@ export class PlayComponent implements OnInit {
         break;
     }
 
+  }
 
+  goHome() {
+    this.routerExtensions.navigate(["home"], { clearHistory: true });
   }
 
   ngOnInit() {

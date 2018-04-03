@@ -1,12 +1,12 @@
 <page loaded="pageLoaded">
   <GridLayout #gridLayout class="page page-content">
 
+    <Image *ngIf="correction === 'true'" class="next" (tap)="nextCorrection()" src="res://next"></Image>
     <Label class="question_number text-right" [text]="questionIndicator" textWrap="true"></Label>
-
-
+    <Image class="home_btn" (tap)="goHome()" src="res://home_btn"></Image>
     <StackLayout>
 
-      <Button text="nextQuestion" (tap)="nextCorrection()"></Button>
+
 
 
 

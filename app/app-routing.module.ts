@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: "play/:correction", component: PlayComponent },
     { path: "dialog", component: ResultDialogComponent },
     { path: "score/:score", component: ScoreComponent },
-    { path: "", redirectTo: "/home", pathMatch: "full" },
+    { path: "", redirectTo: "/play/false", pathMatch: "full" },
     { path: "tabs", loadChildren: "./tabs/tabs.module#TabsModule" }
 ];
 
