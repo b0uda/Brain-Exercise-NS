@@ -7,7 +7,10 @@ import { PlayComponent } from "./play/play.component";
 import { QuestionsService } from "./questions.service";
 import { ResultDialogComponent } from "./result-dialog/result-dialog.component";
 
+import { FormsModule } from "@angular/forms";
+
 import { ModalDialogService } from "nativescript-angular/modal-dialog";
+import { ScoreComponent } from "./score/score.component";
 
 @NgModule({
     bootstrap: [
@@ -15,13 +18,15 @@ import { ModalDialogService } from "nativescript-angular/modal-dialog";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         PlayComponent,
-        ResultDialogComponent
+        ResultDialogComponent,
+        ScoreComponent
 
     ],
     providers: [

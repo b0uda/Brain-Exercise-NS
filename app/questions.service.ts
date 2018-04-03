@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class QuestionsService {
 
+  playerAnswers = [];
+
   questions: Array<IQuestion> = [
 
     {
@@ -103,7 +105,10 @@ export class QuestionsService {
 
   constructor() { }
 
+
 }
+
+
 
 export interface IQuestion {
   id: number;

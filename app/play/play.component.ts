@@ -1,8 +1,10 @@
-import { Component, ElementRef, Input, OnInit, ViewContainerRef, ViewChild, NgZone } from "@angular/core";
+import { Component, ElementRef, Input, NgModule, OnInit, ViewContainerRef, ViewChild, NgZone } from "@angular/core";
 import * as elementRegistryModule from "nativescript-angular/element-registry";
 import * as platformModule from "tns-core-modules/platform";
 
 import { screen } from "platform";
+
+
 
 import { RouterExtensions } from "nativescript-angular/router";
 
@@ -68,8 +70,6 @@ export class PlayComponent implements OnInit {
   questionIndex;
   score;
   questionIndicator: string;
-  playerAnswers: Array<IAnswer>;
-  playwerAnswerTemp: IAnswer;
   correction: boolean;
 
   constructor(
@@ -85,27 +85,14 @@ export class PlayComponent implements OnInit {
     this.questionCurrent = this.questions[0];
     this.score = 0;
     this.questionIndicator = `Question ${this.questionIndex + 1}`;
-    this.playerAnswers = [];
 
     this.route.params
-      .forEach((params) => { this.correction = params.correction; });
+      .forEach((params) => {
+        this.correction = params.correction;
+      });
 
-    console.log(`correction bool ${this.correction}`);
-
-  }
-
-  show() {
-    const options: ModalDialogOptions = {
-      context: { score: this.score },
-      fullscreen: true,
-      viewContainerRef: this.viewContainerRef
-    };
-
-    this.modalService.showModal(ResultDialogComponent, options);
-  }
-
-  pageLoaded() {
-    console.log("loaded");
+    // correction debug value
+    this.correction = false;
   }
 
   ngOnInit() {
@@ -134,6 +121,14 @@ export class PlayComponent implements OnInit {
 
     orientation.disableRotation();
 
+    if (this.correction) {
+      this.answerI0.removeEventListener("tap");
+      this.answerI1.removeEventListener("tap");
+      this.answerI2.removeEventListener("tap");
+      this.answerI3.removeEventListener("tap");
+    }
+
+    // this.playerAnswers[this.questionIndex].playerAnswer
   }
 
   animateQuestionIndicator() {
@@ -142,21 +137,20 @@ export class PlayComponent implements OnInit {
 
   nextQuestion(answer: number): void {
 
-    console.log(`answer ${answer}`);
-
     // todo1
-    this.playwerAnswerTemp = { id: this.questionIndex, question: this.questionCurrent, playerAnswer: answer };
-    this.playerAnswers.push(this.playwerAnswerTemp);
+    // this.playwerAnswerTemp = { id: this.questionIndex, question: this.questionCurrent, playerAnswer: answer };
+    // this.playerAnswers.push(this.playwerAnswerTemp);
 
     this.answerI0.removeEventListener("tap");
     this.answerI1.removeEventListener("tap");
     this.answerI2.removeEventListener("tap");
     this.answerI3.removeEventListener("tap");
 
-    // if quiz finished show the score dialog
-    // this.show();
+    this.questionService.playerAnswers.push(answer);
 
-    console.dir(this.playerAnswers);
+    // console.dir(this.playerAnswers);
+
+
 
     switch (answer) {
       case 0:
@@ -190,12 +184,19 @@ export class PlayComponent implements OnInit {
     // if there is next question
     if (this.questionIndex < this.questions.length - 1) {
 
+      // todo finish test debug
       // if good answer
       if (this.questionCurrent.a === _answer) {
         // console.log("xxx good answer");
         this.score++;
       } else {
         // console.log("xxx bad answer");
+      }
+
+      if (this.questionIndex >= 2) {
+
+        // this.routerExtensions.navigate(['/score'])
+        this.routerExtensions.navigateByUrl(`/score/${this.score}`);
       }
 
       // todo TextChange Animation
@@ -215,7 +216,7 @@ export class PlayComponent implements OnInit {
       setTimeout(() => {
         this.ngZone.run(() => {
           // Do whatever you want here
-          console.log("xxx reload view!!!!");
+
         });
 
         this._questionLabel.animate({
@@ -243,9 +244,8 @@ export class PlayComponent implements OnInit {
 
       // todo questions finished
 
-      dialogs.alert(`you have a score of : ${this.score}`).then(() => {
-        // this.routerExtensions.navigate(["/home"], { clearHistory: false });
-      });
+      this.routerExtensions.navigateByUrl(`/score/${this.score}`);
+
     }
   }
 
@@ -285,8 +285,6 @@ export class PlayComponent implements OnInit {
     setTimeout(() => {
       this.answerL3.className = "answer_label";
     }, 1000);
-
-
 
   }
 
