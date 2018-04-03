@@ -1,8 +1,8 @@
-import { Component, ElementRef, Input, NgModule, OnInit, ViewContainerRef, ViewChild, NgZone } from "@angular/core";
+import { Component, ElementRef, Input, NgModule, OnInit, NgZone, ViewContainerRef, ViewChild } from "@angular/core";
 import * as elementRegistryModule from "nativescript-angular/element-registry";
 import * as platformModule from "tns-core-modules/platform";
 
-import { screen } from "platform";
+import { isAndroid, screen } from "platform";
 
 
 
@@ -28,7 +28,13 @@ import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/mod
 import { HomeComponent } from "../home/home.component";
 import { ResultDialogComponent } from "../result-dialog/result-dialog.component";
 
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+
+import * as application from "application";
+
+import { AndroidApplication, AndroidActivityBackPressedEventData } from "application";
+
+
 
 const tnsfx = require("nativescript-effects");
 
@@ -64,7 +70,6 @@ export class PlayComponent implements OnInit {
   answerL2: Label;
   answerL3: Label;
 
-  router;
   questions: Array<IQuestion>;
   questionCurrent: IQuestion;
   questionIndex;
@@ -80,6 +85,7 @@ export class PlayComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private ngZone: NgZone,
     private route: ActivatedRoute,
+    private router: Router,
     private routerExtensions: RouterExtensions,
     private questionService: QuestionsService) {
 
@@ -211,6 +217,15 @@ export class PlayComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // if not android return
+    if (!isAndroid) {
+      return;
+    }
+    application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+      data.cancel = true;
+      this.routerExtensions.navigate(["/home"], { clearHistory: true });
+    });
 
     const _deviceType = platformModule.device.deviceType;
     const _gridLayout = <GridLayout>this.gridLayout.nativeElement;
@@ -364,8 +379,6 @@ export class PlayComponent implements OnInit {
 
     // console.dir(this.playerAnswers);
 
-
-
     switch (answer) {
       case 0:
         this.animateAnswer0();
@@ -410,7 +423,7 @@ export class PlayComponent implements OnInit {
       if (this.questionIndex >= 2) {
 
         // this.routerExtensions.navigate(['/score'])
-        this.routerExtensions.navigateByUrl(`/score/${this.score}`);
+        this.routerExtensions.navigateByUrl(`/score/${this.score}`, { clearHistory: true });
       }
 
       // todo TextChange Animation
@@ -458,7 +471,7 @@ export class PlayComponent implements OnInit {
 
       // todo questions finished
 
-      this.routerExtensions.navigateByUrl(`/score/${this.score}`);
+      this.routerExtensions.navigateByUrl(`/score/${this.score}`, { clearHistory: true });
 
     }
   }

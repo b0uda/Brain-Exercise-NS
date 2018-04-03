@@ -6,6 +6,13 @@ import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout/stack-layo
 import { IAnswer, QuestionsService } from "../questions.service";
 
 import { ActivatedRoute } from "@angular/router";
+
+import * as application from "application";
+
+import { AndroidActivityBackPressedEventData, AndroidApplication } from "application";
+
+import { isAndroid } from "platform";
+
 const orientation = require("nativescript-orientation");
 
 @Component({
@@ -39,16 +46,25 @@ export class ScoreComponent implements OnInit {
 
   result() {
     // bouda
-    this.routerExtensions.navigateByUrl(`/play/${true}`);
+    this.routerExtensions.navigateByUrl(`/play/${true}`, { clearHistory: true });
     // this.routerExtensions.navigate(["/play", [true, this.playerAnswers]], { clearHistory: true });
   }
 
   ngOnInit() {
+
+    // if not android return
+    if (!isAndroid) {
+      return;
+    }
+    application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+      data.cancel = true;
+      this.routerExtensions.navigate(["/home"], { clearHistory: true });
+    });
+
     const _deviceType = platformModule.device.deviceType;
     const _stackLayout = <StackLayout>this.stackLayout.nativeElement;
     _stackLayout.className = _deviceType.toLowerCase();
     console.log(_deviceType);
-
 
   }
 
