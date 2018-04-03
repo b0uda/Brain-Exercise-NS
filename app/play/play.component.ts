@@ -70,7 +70,10 @@ export class PlayComponent implements OnInit {
   questionIndex;
   score;
   questionIndicator: string;
-  correction: boolean;
+  correction;
+  playerAnswers: Array<number>;
+  goodAnswer: number;
+  playerAnswer: number;
 
   constructor(
     private modalService: ModalDialogService,
@@ -91,8 +94,120 @@ export class PlayComponent implements OnInit {
         this.correction = params.correction;
       });
 
+    // second way to find if correction mode
+    if (this.questionService.playerAnswers.length > 0) {
+      console.log("mode correcton");
+    } else {
+      console.log("mode NO correcton");
+    }
+
     // correction debug value
-    this.correction = false;
+  }
+
+  nextCorrection() {
+    this.questionIndex++;
+    this.questionCurrent = this.questions[this.questionIndex];
+
+    this.answerL0.className = "answer_label";
+    this.answerL1.className = "answer_label";
+    this.answerL2.className = "answer_label";
+    this.answerL3.className = "answer_label";
+
+    this.goodAnswer = this.questions[this.questionIndex].a;
+    this.playerAnswer = this.playerAnswers[this.questionIndex];
+    // switch the player answer for first question "need to be on ngInit()"
+    switch (this.playerAnswer) {
+      case 0:
+
+        if (this.playerAnswer === this.goodAnswer) {
+          this.answerL0.className = "answer_label_correct";
+        } else {
+          this.answerL0.className = "answer_label_incorrect";
+          switch (this.goodAnswer) {
+            case 1:
+              this.answerL1.className = "answer_label_correct";
+              break;
+            case 2:
+              this.answerL2.className = "answer_label_correct";
+              break;
+            case 3:
+              this.answerL3.className = "answer_label_correct";
+              break;
+
+            default:
+              break;
+          }
+        }
+        break;
+      case 1:
+        if (this.playerAnswer === this.goodAnswer) {
+          this.answerL1.className = "answer_label_correct";
+        } else {
+          this.answerL1.className = "answer_label_incorrect";
+          switch (this.goodAnswer) {
+            case 0:
+              this.answerL0.className = "answer_label_correct";
+              break;
+            case 2:
+              this.answerL2.className = "answer_label_correct";
+              break;
+            case 3:
+              this.answerL3.className = "answer_label_correct";
+              break;
+
+            default:
+              break;
+          }
+        }
+        break;
+      case 2:
+        if (this.playerAnswer === this.goodAnswer) {
+          this.answerL2.className = "answer_label_correct";
+        } else {
+          this.answerL2.className = "answer_label_incorrect";
+          switch (this.goodAnswer) {
+            case 0:
+              this.answerL0.className = "answer_label_correct";
+              break;
+            case 1:
+              this.answerL1.className = "answer_label_correct";
+              break;
+            case 3:
+              this.answerL3.className = "answer_label_correct";
+              break;
+
+            default:
+              break;
+          }
+        }
+        break;
+      case 3:
+        if (this.playerAnswer === this.goodAnswer) {
+          this.answerL3.className = "answer_label_correct";
+        } else {
+          this.answerL3.className = "answer_label_incorrect";
+          switch (this.goodAnswer) {
+            case 0:
+              this.answerL0.className = "answer_label_correct";
+              break;
+            case 1:
+              this.answerL1.className = "answer_label_correct";
+              break;
+            case 2:
+              this.answerL2.className = "answer_label_correct";
+              break;
+
+            default:
+              break;
+          }
+        }
+        break;
+
+      default:
+        break;
+    }
+
+
   }
 
   ngOnInit() {
@@ -121,11 +236,108 @@ export class PlayComponent implements OnInit {
 
     orientation.disableRotation();
 
-    if (this.correction) {
+    if (this.correction === "true") {
+
       this.answerI0.removeEventListener("tap");
       this.answerI1.removeEventListener("tap");
       this.answerI2.removeEventListener("tap");
       this.answerI3.removeEventListener("tap");
+      this.playerAnswers = this.questionService.playerAnswers;
+
+      this.goodAnswer = this.questions[this.questionIndex].a;
+      this.playerAnswer = this.playerAnswers[this.questionIndex];
+      // switch the player answer for first question "need to be on ngInit()"
+      switch (this.playerAnswer) {
+        case 0:
+
+          if (this.playerAnswer === this.goodAnswer) {
+            this.answerL0.className = "answer_label_correct";
+          } else {
+            this.answerL0.className = "answer_label_incorrect";
+            switch (this.goodAnswer) {
+              case 1:
+                this.answerL1.className = "answer_label_correct";
+                break;
+              case 2:
+                this.answerL2.className = "answer_label_correct";
+                break;
+              case 3:
+                this.answerL3.className = "answer_label_correct";
+                break;
+
+              default:
+                break;
+            }
+          }
+          break;
+        case 1:
+          if (this.playerAnswer === this.goodAnswer) {
+            this.answerL1.className = "answer_label_correct";
+          } else {
+            this.answerL1.className = "answer_label_incorrect";
+            switch (this.goodAnswer) {
+              case 0:
+                this.answerL0.className = "answer_label_correct";
+                break;
+              case 2:
+                this.answerL2.className = "answer_label_correct";
+                break;
+              case 3:
+                this.answerL3.className = "answer_label_correct";
+                break;
+
+              default:
+                break;
+            }
+          }
+          break;
+        case 2:
+          if (this.playerAnswer === this.goodAnswer) {
+            this.answerL2.className = "answer_label_correct";
+          } else {
+            this.answerL2.className = "answer_label_incorrect";
+            switch (this.goodAnswer) {
+              case 0:
+                this.answerL0.className = "answer_label_correct";
+                break;
+              case 1:
+                this.answerL1.className = "answer_label_correct";
+                break;
+              case 3:
+                this.answerL3.className = "answer_label_correct";
+                break;
+
+              default:
+                break;
+            }
+          }
+          break;
+        case 3:
+          if (this.playerAnswer === this.goodAnswer) {
+            this.answerL3.className = "answer_label_correct";
+          } else {
+            this.answerL3.className = "answer_label_incorrect";
+            switch (this.goodAnswer) {
+              case 0:
+                this.answerL0.className = "answer_label_correct";
+                break;
+              case 1:
+                this.answerL1.className = "answer_label_correct";
+                break;
+              case 2:
+                this.answerL2.className = "answer_label_correct";
+                break;
+
+              default:
+                break;
+            }
+          }
+          break;
+
+        default:
+          break;
+      }
+
     }
 
     // this.playerAnswers[this.questionIndex].playerAnswer
@@ -146,7 +358,9 @@ export class PlayComponent implements OnInit {
     this.answerI2.removeEventListener("tap");
     this.answerI3.removeEventListener("tap");
 
-    this.questionService.playerAnswers.push(answer);
+    if (this.correction === "false") {
+      this.questionService.playerAnswers.push(answer);
+    }
 
     // console.dir(this.playerAnswers);
 

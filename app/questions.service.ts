@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class QuestionsService {
 
-  playerAnswers = [];
+  playerAnswers: Array<number> = [];
 
   questions: Array<IQuestion> = [
 

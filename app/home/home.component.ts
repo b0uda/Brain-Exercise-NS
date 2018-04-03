@@ -117,6 +117,7 @@ export class HomeComponent implements OnInit {
     this.symbol = <Image>this.symbolRef.nativeElement;
 
     orientation.addOrientationApplier(this.orientationChangedCallback.bind(this));
+    orientation.setOrientation("portrait");
     orientation.disableRotation();
 
   }
