@@ -124,22 +124,44 @@ export class PlayComponent implements OnInit {
     this.goodAnswer = this.questions[this.questionIndex].a;
     this.playerAnswer = this.playerAnswers[this.questionIndex];
     // switch the player answer for first question "need to be on ngInit()"
+
+    this.testPlayerAnswer();
+
+  }
+
+  goHome() {
+    this.routerExtensions.navigate(["home"], { clearHistory: true });
+  }
+
+  testPlayerAnswer() {
+
+    // reload original images
+    this.answerI0.src = "res://answer0";
+    this.answerI1.src = "res://answer1";
+    this.answerI2.src = "res://answer2";
+    this.answerI3.src = "res://answer3";
+
     switch (this.playerAnswer) {
       case 0:
 
         if (this.playerAnswer === this.goodAnswer) {
           this.answerL0.className = "answer_label_correct";
+          this.answerI0.src = "res://right";
         } else {
           this.answerL0.className = "answer_label_incorrect";
+          this.answerI0.src = "res://wrong";
           switch (this.goodAnswer) {
             case 1:
               this.answerL1.className = "answer_label_correct";
+              this.answerI1.src = "res://right";
               break;
             case 2:
               this.answerL2.className = "answer_label_correct";
+              this.answerI2.src = "res://right";
               break;
             case 3:
               this.answerL3.className = "answer_label_correct";
+              this.answerI3.src = "res://right";
               break;
 
             default:
@@ -150,17 +172,22 @@ export class PlayComponent implements OnInit {
       case 1:
         if (this.playerAnswer === this.goodAnswer) {
           this.answerL1.className = "answer_label_correct";
+          this.answerI1.src = "res://right";
         } else {
           this.answerL1.className = "answer_label_incorrect";
+          this.answerI1.src = "res://wrong";
           switch (this.goodAnswer) {
             case 0:
               this.answerL0.className = "answer_label_correct";
+              this.answerI0.src = "res://right";
               break;
             case 2:
               this.answerL2.className = "answer_label_correct";
+              this.answerI2.src = "res://right";
               break;
             case 3:
               this.answerL3.className = "answer_label_correct";
+              this.answerI3.src = "res://right";
               break;
 
             default:
@@ -171,17 +198,22 @@ export class PlayComponent implements OnInit {
       case 2:
         if (this.playerAnswer === this.goodAnswer) {
           this.answerL2.className = "answer_label_correct";
+          this.answerI2.src = "res://right";
         } else {
           this.answerL2.className = "answer_label_incorrect";
+          this.answerI2.src = "res://wrong";
           switch (this.goodAnswer) {
             case 0:
               this.answerL0.className = "answer_label_correct";
+              this.answerI0.src = "res://right";
               break;
             case 1:
               this.answerL1.className = "answer_label_correct";
+              this.answerI1.src = "res://right";
               break;
             case 3:
               this.answerL3.className = "answer_label_correct";
+              this.answerI3.src = "res://right";
               break;
 
             default:
@@ -192,17 +224,22 @@ export class PlayComponent implements OnInit {
       case 3:
         if (this.playerAnswer === this.goodAnswer) {
           this.answerL3.className = "answer_label_correct";
+          this.answerI3.src = "res://right";
         } else {
           this.answerL3.className = "answer_label_incorrect";
+          this.answerI3.src = "res://wrong";
           switch (this.goodAnswer) {
             case 0:
               this.answerL0.className = "answer_label_correct";
+              this.answerI0.src = "res://right";
               break;
             case 1:
               this.answerL1.className = "answer_label_correct";
+              this.answerI1.src = "res://right";
               break;
             case 2:
               this.answerL2.className = "answer_label_correct";
+              this.answerI2.src = "res://right";
               break;
 
             default:
@@ -215,10 +252,6 @@ export class PlayComponent implements OnInit {
         break;
     }
 
-  }
-
-  goHome() {
-    this.routerExtensions.navigate(["home"], { clearHistory: true });
   }
 
   ngOnInit() {
@@ -267,97 +300,7 @@ export class PlayComponent implements OnInit {
       this.goodAnswer = this.questions[this.questionIndex].a;
       this.playerAnswer = this.playerAnswers[this.questionIndex];
       // switch the player answer for first question "need to be on ngInit()"
-      switch (this.playerAnswer) {
-        case 0:
-
-          if (this.playerAnswer === this.goodAnswer) {
-            this.answerL0.className = "answer_label_correct";
-          } else {
-            this.answerL0.className = "answer_label_incorrect";
-            switch (this.goodAnswer) {
-              case 1:
-                this.answerL1.className = "answer_label_correct";
-                break;
-              case 2:
-                this.answerL2.className = "answer_label_correct";
-                break;
-              case 3:
-                this.answerL3.className = "answer_label_correct";
-                break;
-
-              default:
-                break;
-            }
-          }
-          break;
-        case 1:
-          if (this.playerAnswer === this.goodAnswer) {
-            this.answerL1.className = "answer_label_correct";
-          } else {
-            this.answerL1.className = "answer_label_incorrect";
-            switch (this.goodAnswer) {
-              case 0:
-                this.answerL0.className = "answer_label_correct";
-                break;
-              case 2:
-                this.answerL2.className = "answer_label_correct";
-                break;
-              case 3:
-                this.answerL3.className = "answer_label_correct";
-                break;
-
-              default:
-                break;
-            }
-          }
-          break;
-        case 2:
-          if (this.playerAnswer === this.goodAnswer) {
-            this.answerL2.className = "answer_label_correct";
-          } else {
-            this.answerL2.className = "answer_label_incorrect";
-            switch (this.goodAnswer) {
-              case 0:
-                this.answerL0.className = "answer_label_correct";
-                break;
-              case 1:
-                this.answerL1.className = "answer_label_correct";
-                break;
-              case 3:
-                this.answerL3.className = "answer_label_correct";
-                break;
-
-              default:
-                break;
-            }
-          }
-          break;
-        case 3:
-          if (this.playerAnswer === this.goodAnswer) {
-            this.answerL3.className = "answer_label_correct";
-          } else {
-            this.answerL3.className = "answer_label_incorrect";
-            switch (this.goodAnswer) {
-              case 0:
-                this.answerL0.className = "answer_label_correct";
-                break;
-              case 1:
-                this.answerL1.className = "answer_label_correct";
-                break;
-              case 2:
-                this.answerL2.className = "answer_label_correct";
-                break;
-
-              default:
-                break;
-            }
-          }
-          break;
-
-        default:
-          break;
-      }
-
+      this.testPlayerAnswer();
     }
 
     // this.playerAnswers[this.questionIndex].playerAnswer

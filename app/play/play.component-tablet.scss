@@ -136,3 +136,49 @@
         transform: scale(1);
     }
 }
+
+.tablet .solution_girl {
+    width: 20%;
+    height: 17%;
+    margin-top: 35%;
+    margin-left: 5%;
+    z-index: 100;
+    animation-name: solution_animate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes solution_animate {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(10%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.tablet .question_explanation {
+    color: red;
+    font-size: 42;
+    text-align: center;
+    width: 86%;
+    margin-left: 7%;
+    margin-top: 35%;
+    font-family: "PermanentMarker-Regular";
+    z-index: 100;
+}
+
+.tablet .explain {
+    color: red;
+    font-size: 26;
+    text-align: center;
+    width: 20%;
+    margin-left: 70%;
+    margin-top: 31%;
+    opacity: .5;
+    font-family: "PermanentMarker-Regular";
+    transform: rotate(30deg);
+}

@@ -8,6 +8,15 @@ export class QuestionsService {
   questions: Array<IQuestion> = [
 
     {
+      id: -1,
+      q: "How many pairs of letters in the word 'CHAIRS' have as many letters between them in the word as in the alphabet?",
+      choices: ["R", "P", "D", "X"],
+      a: 2,
+      rate: 0,
+      hint: "Normal Alphabet Order"
+    },
+
+    {
       id: 0,
       q: "A B C ? E",
       choices: ["R", "P", "D", "X"],
