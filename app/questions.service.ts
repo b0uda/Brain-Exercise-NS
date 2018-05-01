@@ -13,7 +13,9 @@ export class QuestionsService {
       choices: ["R", "P", "D", "X"],
       a: 2,
       rate: 0,
-      hint: "Normal Alphabet Order"
+      hint: `Letters in the word           Letters in the alphabet
+                     C H A                        C B A
+                     R S                           R S  `
     },
 
     {
