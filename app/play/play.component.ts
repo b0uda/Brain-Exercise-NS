@@ -98,11 +98,11 @@ export class PlayComponent implements OnInit {
       case "geo":
         this.questions = questionService.geoQuestions;
         break;
-      case "math":
-        this.questions = questionService.mathQuestions;
+      case "general":
+        this.questions = questionService.generalQuestions;
         break;
       case "science":
-        this.questions = questionService.mathQuestions;
+        this.questions = questionService.scienceQuestions;
         break;
 
       default:

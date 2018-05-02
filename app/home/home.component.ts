@@ -53,13 +53,13 @@ export class HomeComponent implements OnInit {
 
   }
 
-  startNumber($event: EventData) {
+  startGeneral($event: EventData) {
 
     this.number.className = "mode animate_big";
 
     setTimeout(() => {
       this.number.className = "mode";
-      this.routerExtensions.navigate(["/play", false, "math"], {
+      this.routerExtensions.navigate(["/play", false, "general"], {
         clearHistory: false,
         transition: {
           name: "fade",

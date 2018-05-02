@@ -5,7 +5,18 @@ export class QuestionsService {
 
   playerAnswers: Array<number> = [];
 
-  mathQuestions: Array<IQuestion> = [
+  scienceQuestions: Array<IQuestion> = [
+    {
+      id: 0,
+      q: "A B C ? E",
+      choices: ["R", "P", "D", "X"],
+      a: 2,
+      rate: 0,
+      hint: "Normal Alphabet Order"
+    }
+  ];
+
+  generalQuestions: Array<IQuestion> = [
 
     {
       id: 0,
