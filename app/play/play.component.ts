@@ -32,8 +32,6 @@ import * as application from "application";
 
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "application";
 
-
-
 const tnsfx = require("nativescript-effects");
 
 const orientation = require("nativescript-orientation");
@@ -395,8 +393,6 @@ export class PlayComponent implements OnInit {
       }
 
       // todo if was here
-
-
 
       // todo TextChange Animation
 

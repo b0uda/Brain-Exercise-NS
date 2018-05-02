@@ -20,95 +20,320 @@ export class QuestionsService {
 
     {
       id: 0,
-      q: "A B C ? E",
-      choices: ["R", "P", "D", "X"],
-      a: 2,
+      q: "Where does the president of the United States of America live?",
+      choices: ["Hotel", "Castle", "Palace", "White House"],
+      a: 3,
       rate: 0,
-      hint: "Normal Alphabet Order"
+      hint: "White House"
     },
 
     {
       id: 1,
-      q: "U O I ? A",
-      choices: ["Q", "E", "C", "J"],
-      a: 1,
+      q: "What is the largest brass instrument in an orchestra?",
+      choices: ["Flutes", "Bassons", "Tuba", "Trumpet"],
+      a: 2,
       rate: 0,
-      hint: "vowles A, E, I, O, U\nin reverse order"
+      hint: "Tuba"
     },
 
     {
       id: 2,
-      q: "Y W U S Q ? ?",
-      choices: ["Q S", "O M", "K M", "L T"],
-      a: 1,
+      q: "Which country does parmesan cheese come from?",
+      choices: ["Italy", "Germany", "France", "Russia"],
+      a: 0,
       rate: 0,
-      hint: "alternate letters\nin reverse order"
+      hint: "Italy"
     },
 
     {
       id: 3,
-      q: "A B D G ?",
-      choices: ["Q", "M", "K", "L"],
-      a: 2,
+      q: "What is the name of the highest Mountain in Africa?",
+      choices: ["Karisimbi", "Mount Kilimanjaro", "Mikeno", "Bwahit"],
+      a: 1,
       rate: 0,
-      hint: "letters of the series are\nrespectivelymoved one\ntwo three,... steps forward."
+      hint: "Mount Kilimanjaro"
     },
     {
       id: 4,
-      q: "Z U Q ? L",
-      choices: ["I", "M", "O", "N"],
+      q: "What type of tree do dates grow on?",
+      choices: ["Basswood", "Hawthorn", "Butternut", "Palm trees"],
       a: 3,
       rate: 0,
-      hint: "letters of the series are\nrespectivelymoved one\ntwo three,... steps forward.."
+      hint: "Palm trees"
     },
 
     {
       id: 5,
-      q: "A C F H ? M",
-      choices: ["I", "L", "K", "J"],
+      q: "Which is not a color of Olympic rings?",
+      choices: ["Red", "Blue", "Orange", "Yellow"],
       a: 2,
       rate: 0,
-      hint: "Letters moved two and\nthree steps forward"
+      hint: "Orange"
     }
     ,
 
     {
       id: 6,
-      q: "R M ? F D ?",
-      choices: ["C B", "B H", "I C", "J H"],
-      a: 2,
+      q: "How many holes are there in a standard ten pin bowling ball?",
+      choices: ["2", "3", "4", "1"],
+      a: 1,
       rate: 0,
-      hint: "Letter are in reverse order"
+      hint: "3"
     }
     ,
 
     {
       id: 7,
-      q: "Z L X J V H T F ? ?",
-      choices: ["R D", "S E", "R E", "Q D"],
-      a: 0,
+      q: "What letter is located between letter E and T on a computer keyboard?",
+      choices: ["Y ", "Z", "W", "R"],
+      a: 3,
       rate: 0,
-      hint: "two series Z X V T ?\nand L J H F ?"
+      hint: "R"
     }
     ,
 
     {
       id: 8,
-      q: "Z S W O T K Q G ? ?",
-      choices: ["OC", "NC", "ND", "OD"],
-      a: 1,
+      q: "How many cards are there in a complete pack of cards?",
+      choices: ["54", "50", "48", "52"],
+      a: 3,
       rate: 0,
-      hint: "two series Z W T V Q ? \nand S O K G ?"
+      hint: "52"
     }
     ,
 
     {
       id: 9,
-      q: "W V T S Q P N M ? ?",
-      choices: ["I J", "J K", "J I", "K J"],
+      q: "What is the largest island in the Mediterranean sea?",
+      choices: ["Sicily", "Ibiza", "Menorca", "Santorini"],
+      a: 0,
+      rate: 0,
+      hint: "Sicily"
+    },
+    {
+      id: 10,
+      q: "What is the most popular sport throughout the world?",
+      choices: ["BasketBall", "Football", "Tennis", "HandBall"],
+      a: 1,
+      rate: 0,
+      hint: "Football"
+    },
+    {
+      id: 11,
+      q: "Which famous girl band did Cheryl Cole belong to?",
+      choices: ["TLC", "En Vogue", "Spice Girls", "Girls Aloud"],
       a: 3,
       rate: 0,
-      hint: "letters moved one and\ntwo steps backward"
+      hint: "Girls Aloud"
+    },
+    {
+      id: 12,
+      q: "How many hours are there in seven days?",
+      choices: ["168", "172", "150", "160"],
+      a: 0,
+      rate: 0,
+      hint: "168"
+    },
+    {
+      id: 13,
+      q: "What colour do you get if you mix blue and yellow paint together?",
+      choices: ["orange", "Red", "Green", "Purple"],
+      a: 2,
+      rate: 0,
+      hint: "Green"
+    },
+    {
+      id: 14,
+      q: "In which American city is the Statue of Liberty is located?",
+      choices: ["New York", "San Diego", "Los Angeles", "Las Vegas"],
+      a: 0,
+      rate: 0,
+      hint: "New York"
+    },
+    {
+      id: 15,
+      q: "Global warming is caused by too much of which type of gas?",
+      choices: ["hydrogen", "Carbon dioxide", "Nitrogen", "Helium"],
+      a: 1,
+      rate: 0,
+      hint: "Carbon dioxide"
+    },
+    {
+      id: 16,
+      q: "What type of metal makes the strongest magnets?",
+      choices: ["Steel", "Silver", "Gold", "Iron"],
+      a: 3,
+      rate: 0,
+      hint: "Iron"
+    },
+    {
+      id: 17,
+      q: "What year did the Second World War start?",
+      choices: ["1941", "1933", "1939", "1944"],
+      a: 2,
+      rate: 0,
+      hint: "1939"
+    }, {
+      id: 18,
+      q: "How many leaves does a shamrock have?",
+      choices: ["2", "1", "3", "4"],
+      a: 2,
+      rate: 0,
+      hint: "3"
+    }, {
+      id: 19,
+      q: "What type of gas do plants absorb from the atmosphere?",
+      choices: ["carbon dioxide", "Freon", "Helium", "Air"],
+      a: 0,
+      rate: 0,
+      hint: "carbon dioxide"
+    }, {
+      id: 20,
+      q: "How many strings does a violin have?",
+      choices: ["3", "4", "5", "6"],
+      a: 1,
+      rate: 0,
+      hint: "4"
+    }, {
+      id: 21,
+      q: "How many years are there in a century?",
+      choices: ["10", "50", "1000", "100"],
+      a: 3,
+      rate: 0,
+      hint: "100"
+    }, {
+      id: 22,
+      q: "Which continent does India belong to?",
+      choices: ["Africa", "Asia", "Europe", "America"],
+      a: 1,
+      rate: 0,
+      hint: "Asia"
+    }, {
+      id: 23,
+      q: "How many zeros are there in one hundred thousand?",
+      choices: ["3", "4", "5", "6"],
+      a: 2,
+      rate: 0,
+      hint: "5"
+    }, {
+      id: 24,
+      q: "In the fairytale of Cinderella, what does Cinderella leave behind at the ball?",
+      choices: ["Glass slipper", "Sandal slipper", "Closed back", "Slip on"],
+      a: 0,
+      rate: 0,
+      hint: "Glass slipper"
+    }, {
+      id: 25,
+      q: "Which continent is the Sahara Desert located on?",
+      choices: ["America", "Europe", "Africa", "Asia"],
+      a: 2,
+      rate: 0,
+      hint: "Africa"
+    }, {
+      id: 26,
+      q: "Parrots, pelicans and cuckoos are all types of what?",
+      choices: ["Birds", "Dogs", "Cats", "Spiders"],
+      a: 0,
+      rate: 0,
+      hint: "Birds"
+    }, {
+      id: 27,
+      q: "How much change would you have from £2 if you bought two stamps at 60p each?",
+      choices: ["80p", "70p", "40p", "60p"],
+      a: 0,
+      rate: 0,
+      hint: "80p"
+    }, {
+      id: 28,
+      q: "Which Disney character has a nose that grows longer every time he tells a lie?",
+      choices: ["Ariel", "Goofy", "Pluto", "Pinocchio"],
+      a: 3,
+      rate: 0,
+      hint: "Pinocchio"
+    }, {
+      id: 29,
+      q: "How many hours are there in three days?",
+      choices: ["64", "68", "72", "74"],
+      a: 2,
+      rate: 0,
+      hint: "72"
+    }, {
+      id: 30,
+      q: "Which of the following creatures is not a species of reptile?",
+      choices: ["turtle", "spider", "lizard", "Dinosaur"],
+      a: 1,
+      rate: 0,
+      hint: "Spider"
+    }, {
+      id: 31,
+      q: "What country is the River Thames in?",
+      choices: ["England", "Spain", "Romania", "Italy"],
+      a: 0,
+      rate: 0,
+      hint: "England"
+    }, {
+      id: 32,
+      q: "What color must be added to yellow to make orange?",
+      choices: ["Blue", "Yellow", "Green", "Red"],
+      a: 3,
+      rate: 0,
+      hint: "Red"
+    }, {
+      id: 33,
+      q: "How many finger holes are there on the front of a recorder?",
+      choices: ["6", "7", "5", "8"],
+      a: 1,
+      rate: 0,
+      hint: "7"
+    }, {
+      id: 34,
+      q: "How many major planets are there in our solar system?",
+      choices: ["7", "9", "8", "10"],
+      a: 2,
+      rate: 0,
+      hint: "Eight (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune)"
+    }, {
+      id: 35,
+      q: "What is the 15th letter of the alphabet?",
+      choices: ["P", "I", "O", "U"],
+      a: 2,
+      rate: 0,
+      hint: "O"
+    }, {
+      id: 36,
+      q: "Which continent has the lowest population of people?",
+      choices: ["Antarctica", "Africa", "Europe", "Australia"],
+      a: 0,
+      rate: 0,
+      hint: "Antarctica"
+    }, {
+      id: 37,
+      q: "How many months of the year begin with the letter A?",
+      choices: ["1", "3", "2", "4"],
+      a: 2,
+      rate: 0,
+      hint: "Two: April and August"
+    }, {
+      id: 38,
+      q: "What is the largest rainforest in the world?",
+      choices: ["Congo", "Amazon", "Daintree", "Monteverade"],
+      a: 1,
+      rate: 0,
+      hint: "Amazon"
+    }, {
+      id: 39,
+      q: "Which planet is known as the Red Planet?",
+      choices: ["Mars", "Earth", "Venus", "Pluton"],
+      a: 0,
+      rate: 0,
+      hint: "Mars"
+    }, {
+      id: 40,
+      q: "Which ocean separates North America from Europe?",
+      choices: ["Indian", "Arctic", "Pacific", "Atlantic"],
+      a: 3,
+      rate: 0,
+      hint: "Atlantic"
     }
 
   ];
