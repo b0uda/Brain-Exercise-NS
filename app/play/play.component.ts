@@ -88,16 +88,43 @@ export class PlayComponent implements OnInit {
     private routerExtensions: RouterExtensions,
     private questionService: QuestionsService) {
 
-    this.questions = questionService.questions;
+
+
+    this.route.params
+      .forEach((params) => {
+        this.correction = params.correction;
+        this.mode = params.mode;
+      });
+
+    switch (this.mode) {
+      case "geo":
+        this.questions = questionService.geoQuestions;
+        break;
+      case "math":
+        this.questions = questionService.mathQuestions;
+        break;
+      case "science":
+        this.questions = questionService.mathQuestions;
+        break;
+
+      default:
+        break;
+    }
+
     this.questionIndex = 0;
     this.questionCurrent = this.questions[0];
     this.score = 0;
     this.questionIndicator = `Question ${this.questionIndex + 1}`;
 
-    this.route.params
-      .forEach((params) => {
-        this.correction = params.correction;
-      });
+    // init the players answers every qcm
+
+    if (this.correction === "false") {
+      console.log("answers initialized !!!!");
+      this.questionService.playerAnswers = [];
+    }
+
+    console.log(`corection value is : ${this.correction}`);
+    console.dir(this.questionService.playerAnswers);
 
     // second way to find if correction mode
     if (this.questionService.playerAnswers.length > 0) {
@@ -255,6 +282,8 @@ export class PlayComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log(`mode is : ${this.mode}`);
+
     // if not android return
     if (!isAndroid) {
       return;
@@ -367,10 +396,10 @@ export class PlayComponent implements OnInit {
         // console.log("xxx bad answer");
       }
 
-      if (this.questionIndex >= 4) {
+      if (this.questionIndex >= 3) {
 
         // this.routerExtensions.navigate(['/score'])
-        this.routerExtensions.navigateByUrl(`/score/${this.score}`, { clearHistory: true });
+        this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
       }
 
       // todo TextChange Animation

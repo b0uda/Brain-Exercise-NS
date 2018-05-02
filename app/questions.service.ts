@@ -5,7 +5,7 @@ export class QuestionsService {
 
   playerAnswers: Array<number> = [];
 
-  questions: Array<IQuestion> = [
+  mathQuestions: Array<IQuestion> = [
 
     {
       id: 0,
@@ -103,22 +103,46 @@ export class QuestionsService {
 
   ];
 
-  geography: Array<IQuestion> = [
+  geoQuestions: Array<IQuestion> = [
     {
-      id: 9,
+      id: 0,
       q: "Which country is Paris the capital of?",
-      choices: ["France", "Spain", "Italy", "Greece"],
+      choices: ["Greece", "Spain", "Italy", "France"],
       a: 3,
       rate: 0,
       hint: "paris"
     },
     {
-      id: 9,
+      id: 1,
       q: "What is the capital of Australia?",
-      choices: ["Bathurst", "Sydney", "Dubbo", "Canberra"],
-      a: 3,
+      choices: ["Bathurst", "Sydney", "Canberra", "Dubbo"],
+      a: 2,
       rate: 0,
       hint: "Canberra"
+    },
+    {
+      id: 2,
+      q: "What is the capital of Germany?",
+      choices: ["Jena", "Frankfurt", "Nice", "Berlin"],
+      a: 3,
+      rate: 0,
+      hint: "Berlin"
+    },
+    {
+      id: 3,
+      q: "Which country is Washington DC the capital of?",
+      choices: ["Romania", "America", "Italy", "Mexico"],
+      a: 1,
+      rate: 0,
+      hint: "America"
+    },
+    {
+      id: 0,
+      q: "Which country is Madrid the capital of?",
+      choices: ["Spain", "Poland", "Italy", "Austria"],
+      a: 0,
+      rate: 0,
+      hint: "Spain"
     }
   ];
 

@@ -26,6 +26,7 @@ export class ScoreComponent implements OnInit {
   @ViewChild("stackLayout") stackLayout: ElementRef;
   score;
   _stackLayout;
+  mode: string;
 
   constructor(
     private routerExtensions: RouterExtensions,
@@ -35,6 +36,8 @@ export class ScoreComponent implements OnInit {
     this.route.params
       .forEach((params) => {
         this.score = `U have ${params.score} correct answers`;
+        this.score = params.score;
+        this.mode = params.mode;
       });
 
     console.log(questionsService.playerAnswers);
@@ -46,7 +49,7 @@ export class ScoreComponent implements OnInit {
 
   result() {
     // bouda
-    this.routerExtensions.navigateByUrl(`/play/${true}`, { clearHistory: true });
+    this.routerExtensions.navigateByUrl(`/play/${true}/${this.mode}`, { clearHistory: true });
     // this.routerExtensions.navigate(["/play", [true, this.playerAnswers]], { clearHistory: true });
   }
 

@@ -35,13 +35,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private routerExtensions: RouterExtensions) { }
 
-  startAlphabet($event: EventData) {
+  startGeo($event: EventData) {
 
     this.alphabet.className = "mode animate_big";
 
     setTimeout(() => {
       this.alphabet.className = "mode";
-      this.routerExtensions.navigate(["/play", false], {
+      this.routerExtensions.navigate(["/play", false, "geo"], {
         clearHistory: false,
         transition: {
           name: "fade",
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.number.className = "mode";
-      this.routerExtensions.navigate(["/play", false], {
+      this.routerExtensions.navigate(["/play", false, "math"], {
         clearHistory: false,
         transition: {
           name: "fade",
@@ -71,13 +71,13 @@ export class HomeComponent implements OnInit {
 
   }
 
-  startSymbol($event: EventData) {
+  startScience($event: EventData) {
 
     this.symbol.className = "mode animate_big";
 
     setTimeout(() => {
       this.number.className = "mode";
-      this.routerExtensions.navigate(["/play", false], {
+      this.routerExtensions.navigate(["/play", false, "science"], {
         clearHistory: false,
         transition: {
           name: "fade",

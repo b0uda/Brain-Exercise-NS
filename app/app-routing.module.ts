@@ -8,10 +8,10 @@ import { ScoreComponent } from "./score/score.component";
 
 const routes: Routes = [
     { path: "home", component: HomeComponent },
-    { path: "play/:correction", component: PlayComponent },
+    { path: "play/:correction/:mode", component: PlayComponent },
     { path: "dialog", component: ResultDialogComponent },
-    { path: "score/:score", component: ScoreComponent },
-    { path: "", redirectTo: "/play/false", pathMatch: "full" },
+    { path: "score/:score/:mode", component: ScoreComponent },
+    { path: "", redirectTo: "/play/false/geo", pathMatch: "full" },
     { path: "tabs", loadChildren: "./tabs/tabs.module#TabsModule" }
 ];
 
