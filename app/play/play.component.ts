@@ -88,8 +88,6 @@ export class PlayComponent implements OnInit {
     private routerExtensions: RouterExtensions,
     private questionService: QuestionsService) {
 
-
-
     this.route.params
       .forEach((params) => {
         this.correction = params.correction;
@@ -396,11 +394,9 @@ export class PlayComponent implements OnInit {
         // console.log("xxx bad answer");
       }
 
-      if (this.questionIndex >= 3) {
+      // todo if was here
 
-        // this.routerExtensions.navigate(['/score'])
-        this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
-      }
+
 
       // todo TextChange Animation
 
@@ -443,11 +439,18 @@ export class PlayComponent implements OnInit {
 
       }, 1200);
 
+      console.log(`index : ${this.questionIndex}  lenght: ${this.questions.length}`);
+      if (this.questionIndex >= this.questions.length - 1) {
+
+        // this.routerExtensions.navigate(['/score'])
+        this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
+      }
+
     } else {
 
       // todo questions finished
 
-      this.routerExtensions.navigateByUrl(`/score/${this.score}`, { clearHistory: true });
+      this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
 
     }
   }
