@@ -8,17 +8,6 @@ export class QuestionsService {
   questions: Array<IQuestion> = [
 
     {
-      id: -1,
-      q: "How many pairs of letters in the word 'CHAIRS' have as many letters between them in the word as in the alphabet?",
-      choices: ["R", "P", "D", "X"],
-      a: 2,
-      rate: 0,
-      hint: `Letters in the word           Letters in the alphabet
-                     C H A                        C B A
-                     R S                           R S  `
-    },
-
-    {
       id: 0,
       q: "A B C ? E",
       choices: ["R", "P", "D", "X"],
@@ -114,12 +103,28 @@ export class QuestionsService {
 
   ];
 
+  geography: Array<IQuestion> = [
+    {
+      id: 9,
+      q: "Which country is Paris the capital of?",
+      choices: ["France", "Spain", "Italy", "Greece"],
+      a: 3,
+      rate: 0,
+      hint: "paris"
+    },
+    {
+      id: 9,
+      q: "What is the capital of Australia?",
+      choices: ["Bathurst", "Sydney", "Dubbo", "Canberra"],
+      a: 3,
+      rate: 0,
+      hint: "Canberra"
+    }
+  ];
+
   constructor() { }
 
-
 }
-
-
 
 export interface IQuestion {
   id: number;

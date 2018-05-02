@@ -4,8 +4,6 @@ import * as platformModule from "tns-core-modules/platform";
 
 import { isAndroid, screen } from "platform";
 
-
-
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { Image } from "ui/image";
@@ -70,6 +68,7 @@ export class PlayComponent implements OnInit {
   answerL2: Label;
   answerL3: Label;
 
+  mode: string;
   questions: Array<IQuestion>;
   questionCurrent: IQuestion;
   questionIndex;
@@ -368,7 +367,7 @@ export class PlayComponent implements OnInit {
         // console.log("xxx bad answer");
       }
 
-      if (this.questionIndex >= 2) {
+      if (this.questionIndex >= 4) {
 
         // this.routerExtensions.navigate(['/score'])
         this.routerExtensions.navigateByUrl(`/score/${this.score}`, { clearHistory: true });
