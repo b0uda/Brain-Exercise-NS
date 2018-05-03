@@ -115,21 +115,10 @@ export class PlayComponent implements OnInit {
     // init the players answers every qcm
 
     if (this.correction === "false") {
-      console.log("answers initialized !!!!");
+
       this.questionService.playerAnswers = [];
     }
 
-    console.log(`corection value is : ${this.correction}`);
-    console.dir(this.questionService.playerAnswers);
-
-    // second way to find if correction mode
-    if (this.questionService.playerAnswers.length > 0) {
-      console.log("mode correcton");
-    } else {
-      console.log("mode NO correcton");
-    }
-
-    // correction debug value
   }
 
   nextCorrection() {
@@ -287,7 +276,7 @@ export class PlayComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(`mode is : ${this.mode}`);
+
 
     // if not android return
     if (!isAndroid) {
@@ -312,7 +301,7 @@ export class PlayComponent implements OnInit {
     this.answerI1 = <Image>this.answerImg1.nativeElement;
     this.answerI2 = <Image>this.answerImg2.nativeElement;
     this.answerI3 = <Image>this.answerImg3.nativeElement;
-    // console.dir(this.answerI0);
+
     // Quiz Logic
 
     this.answerL0 = <Label>this.answerLabel0.nativeElement;
@@ -358,7 +347,7 @@ export class PlayComponent implements OnInit {
       this.questionService.playerAnswers.push(answer);
     }
 
-    // console.dir(this.playerAnswers);
+
 
     switch (answer) {
       case 0:
@@ -386,6 +375,12 @@ export class PlayComponent implements OnInit {
       this.nextQuestionLogic(answer);
     }, 1000);
 
+    this._questionLabel.animate({
+      opacity: 0,
+      duration: 200,
+      curve: AnimationCurve.easeInOut
+    });
+
   }
 
   nextQuestionLogic(_answer: number) {
@@ -395,58 +390,54 @@ export class PlayComponent implements OnInit {
       // todo finish test debug
       // if good answer
       if (this.questionCurrent.a === _answer) {
-        // console.log("xxx good answer");
+
         this.score++;
-      } else {
-        // console.log("xxx bad answer");
       }
 
       // todo if was here
 
       // todo TextChange Animation
 
-      setTimeout(() => {
-        this._questionLabel.animate({
-          opacity: 0,
-          duration: 200,
-          curve: AnimationCurve.easeInOut
-        });
-        this.questionIndex++;
-        this.animateQuestionIndicator();
-        this.questionCurrent = this.questions[this.questionIndex];
-      }, 1000);
+      // setTimeout(() => {
+
+      this.questionIndex++;
+      this.animateQuestionIndicator();
+      this.questionCurrent = this.questions[this.questionIndex];
+      // }, 1000);
+
+
+
+      this._questionLabel.animate({
+        opacity: 1,
+        duration: 200,
+        curve: AnimationCurve.easeInOut
+      });
+
+      this.answerI0.addEventListener("tap", () => {
+        this.nextQuestion(0);
+      });
+      this.answerI1.addEventListener("tap", () => {
+        this.nextQuestion(1);
+      });
+      this.answerI2.addEventListener("tap", () => {
+        this.nextQuestion(2);
+      });
+      this.answerI3.addEventListener("tap", () => {
+        this.nextQuestion(3);
+      });
 
       // change the text of question and show it after fade
-      setTimeout(() => {
-        this.ngZone.run(() => {
-          // Do whatever you want here
+      // setTimeout(() => {
+      this.ngZone.run(() => {
+        // Do whatever you want here
 
-        });
+      });
 
-        this._questionLabel.animate({
-          opacity: 1,
-          duration: 200,
-          curve: AnimationCurve.easeInOut
-        });
-
-        this.answerI0.addEventListener("tap", () => {
-          this.nextQuestion(0);
-        });
-        this.answerI1.addEventListener("tap", () => {
-          this.nextQuestion(1);
-        });
-        this.answerI2.addEventListener("tap", () => {
-          this.nextQuestion(2);
-        });
-        this.answerI3.addEventListener("tap", () => {
-          this.nextQuestion(3);
-        });
-
-      }, 1200);
+      // }, 1200);
 
       console.log(`index : ${this.questionIndex}  lenght: ${this.questions.length}`);
-      // if (this.questionIndex >= this.questions.length - 1) {
-      if (this.questionIndex >= 3) {
+      if (this.questionIndex >= this.questions.length - 1) {
+        // if (this.questionIndex >= 3) {
         // this.routerExtensions.navigate(['/score'])
         this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
       }
@@ -462,158 +453,89 @@ export class PlayComponent implements OnInit {
 
   animateAnswer0() {
     this.answerI0.className = "panel_answer animate_bigger";
-    setTimeout(() => {
-      this.answerI0.className = "panel_answer";
-    }, 1000);
-    this.answerL0.className = "answer_label animate_bigger";
-    setTimeout(() => {
-      this.answerL0.className = "answer_label";
-    }, 1000);
 
     this.answerI1.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI1.className = "panel_answer";
-    }, 1000);
     this.answerL1.className = "answer_label animate_smaller";
-    setTimeout(() => {
-      this.answerL1.className = "answer_label";
-    }, 1000);
-
     this.answerI2.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI2.className = "panel_answer";
-    }, 1000);
     this.answerL2.className = "answer_label animate_smaller";
-    setTimeout(() => {
-      this.answerL2.className = "answer_label";
-    }, 1000);
-
     this.answerI3.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI3.className = "panel_answer";
-    }, 1000);
     this.answerL3.className = "answer_label animate_smaller";
     setTimeout(() => {
+      this.answerI0.className = "panel_answer";
+      this.answerI1.className = "panel_answer";
+      this.answerL1.className = "answer_label";
+      this.answerI2.className = "panel_answer";
+      this.answerL2.className = "answer_label";
+      this.answerI3.className = "panel_answer";
       this.answerL3.className = "answer_label";
-    }, 1000);
+
+    }, 1200);
 
   }
 
   animateAnswer1() {
     this.answerI1.className = "panel_answer animate_bigger";
-    setTimeout(() => {
-      this.answerI1.className = "panel_answer";
-    }, 1000);
-    this.answerL1.className = "answer_label animate_bigger";
-    setTimeout(() => {
-      this.answerL1.className = "answer_label";
-    }, 1000);
 
     this.answerI0.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI0.className = "panel_answer";
-    }, 1000);
     this.answerL0.className = "answer_label animate_smaller";
-    setTimeout(() => {
-      this.answerL0.className = "answer_label";
-    }, 1000);
-
     this.answerI2.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI2.className = "panel_answer";
-    }, 1000);
     this.answerL2.className = "answer_label animate_smaller";
-    setTimeout(() => {
-      this.answerL2.className = "answer_label";
-    }, 1000);
-
     this.answerI3.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI3.className = "panel_answer";
-    }, 1000);
     this.answerL3.className = "answer_label animate_smaller";
     setTimeout(() => {
+      this.answerI1.className = "panel_answer";
+
+      this.answerI0.className = "panel_answer";
+      this.answerL0.className = "answer_label";
+      this.answerI2.className = "panel_answer";
+      this.answerL2.className = "answer_label";
+      this.answerI3.className = "panel_answer";
       this.answerL3.className = "answer_label";
-    }, 1000);
+    }, 1200);
 
   }
 
   animateAnswer2() {
     this.answerI2.className = "panel_answer animate_bigger";
-    setTimeout(() => {
-      this.answerI2.className = "panel_answer";
-    }, 1000);
-    this.answerL2.className = "answer_label animate_bigger";
-    setTimeout(() => {
-      this.answerL2.className = "answer_label";
-    }, 1000);
 
     this.answerI0.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI0.className = "panel_answer";
-    }, 1000);
     this.answerL0.className = "answer_label animate_smaller";
-    setTimeout(() => {
-      this.answerL0.className = "answer_label";
-    }, 1000);
-
     this.answerI1.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI1.className = "panel_answer";
-    }, 1000);
     this.answerL1.className = "answer_label animate_smaller";
-    setTimeout(() => {
-      this.answerL1.className = "answer_label";
-    }, 1000);
-
     this.answerI3.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI3.className = "panel_answer";
-    }, 1000);
     this.answerL3.className = "answer_label animate_smaller";
     setTimeout(() => {
+      this.answerI2.className = "panel_answer";
+
+      this.answerI0.className = "panel_answer";
+      this.answerL0.className = "answer_label";
+      this.answerI1.className = "panel_answer";
+      this.answerL1.className = "answer_label";
+      this.answerI3.className = "panel_answer";
       this.answerL3.className = "answer_label";
-    }, 1000);
+    }, 1200);
 
   }
 
   animateAnswer3() {
     this.answerI3.className = "panel_answer animate_bigger";
-    setTimeout(() => {
-      this.answerI3.className = "panel_answer";
-    }, 1000);
-    this.answerL3.className = "answer_label animate_bigger";
-    setTimeout(() => {
-      this.answerL3.className = "answer_label";
-    }, 1000);
 
     this.answerI0.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI0.className = "panel_answer";
-    }, 1000);
     this.answerL0.className = "answer_label animate_smaller";
-    setTimeout(() => {
-      this.answerL0.className = "answer_label";
-    }, 1000);
-
     this.answerI1.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI1.className = "panel_answer";
-    }, 1000);
     this.answerL1.className = "answer_label animate_smaller";
-    setTimeout(() => {
-      this.answerL1.className = "answer_label";
-    }, 1000);
-
     this.answerI2.className = "panel_answer animate_smaller";
-    setTimeout(() => {
-      this.answerI2.className = "panel_answer";
-    }, 1000);
     this.answerL2.className = "answer_label animate_smaller";
     setTimeout(() => {
-      this.answerL2.className = "answer_label";
-    }, 1000);
+      this.answerI3.className = "panel_answer";
 
+      this.answerI0.className = "panel_answer";
+      this.answerL0.className = "answer_label";
+      this.answerI1.className = "panel_answer";
+      this.answerL1.className = "answer_label";
+      this.answerI2.className = "panel_answer";
+      this.answerL2.className = "answer_label";
+    }, 1200);
   }
 
 }

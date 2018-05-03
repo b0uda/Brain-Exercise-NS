@@ -42,13 +42,13 @@
 
 @keyframes answer_animate_bigger {
     0% {
-        transform: scale(1);
+        transform: scaleY(1);
     }
     50% {
-        transform: scale(1.3);
+        transform: scaleY(1.2);
     }
     100% {
-        transform: scale(1);
+        transform: scaleY(1);
     }
 }
 
@@ -59,15 +59,12 @@
 
 @keyframes answer_animate_smaller {
     0% {
-        transform: scale(1);
         transform: translateY(0);
     }
     50% {
-        transform: scale(0.1);
         transform: translateY(50%);
     }
     100% {
-        transform: scale(1);
         transform: translateY(0);
     }
 }
