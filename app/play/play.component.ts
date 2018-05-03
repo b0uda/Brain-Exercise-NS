@@ -113,9 +113,7 @@ export class PlayComponent implements OnInit {
     this.questionIndicator = `Question ${this.questionIndex + 1}`;
 
     // init the players answers every qcm
-
     if (this.correction === "false") {
-
       this.questionService.playerAnswers = [];
     }
 
@@ -144,9 +142,6 @@ export class PlayComponent implements OnInit {
     // switch the player answer for first question "need to be on ngInit()"
 
     this.testPlayerAnswer();
-
-
-
   }
 
   goHome() {
@@ -276,8 +271,6 @@ export class PlayComponent implements OnInit {
 
   ngOnInit() {
 
-
-
     // if not android return
     if (!isAndroid) {
       return;
@@ -346,9 +339,6 @@ export class PlayComponent implements OnInit {
     if (this.correction === "false") {
       this.questionService.playerAnswers.push(answer);
     }
-
-
-
     switch (answer) {
       case 0:
         this.animateAnswer0();
@@ -405,8 +395,6 @@ export class PlayComponent implements OnInit {
       this.questionCurrent = this.questions[this.questionIndex];
       // }, 1000);
 
-
-
       this._questionLabel.animate({
         opacity: 1,
         duration: 200,
@@ -434,8 +422,6 @@ export class PlayComponent implements OnInit {
       });
 
       // }, 1200);
-
-      console.log(`index : ${this.questionIndex}  lenght: ${this.questions.length}`);
       if (this.questionIndex >= this.questions.length - 1) {
         // if (this.questionIndex >= 3) {
         // this.routerExtensions.navigate(['/score'])
