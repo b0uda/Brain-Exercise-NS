@@ -1,2 +1,19 @@
+.tablet,
+.phone {
+    width: 100%;
+    height: 100%;
+    background-image: url("res://score_background");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.score {
+    font-family: "Chalkduster";
+    color: white;
+    width: 75%;
+    margin-top: 25%;
+}
+
 @import "./score.component-tablet.scss";
 @import "./score.component-phone.scss";

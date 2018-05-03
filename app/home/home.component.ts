@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.alphabet.className = "mode";
       this.routerExtensions.navigate(["/play", false, "geo"], {
-        clearHistory: false,
+        clearHistory: true,
         transition: {
           name: "fade",
           duration: 900,
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.number.className = "mode";
       this.routerExtensions.navigate(["/play", false, "general"], {
-        clearHistory: false,
+        clearHistory: true,
         transition: {
           name: "fade",
           duration: 900,
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.number.className = "mode";
       this.routerExtensions.navigate(["/play", false, "science"], {
-        clearHistory: false,
+        clearHistory: true,
         transition: {
           name: "fade",
           duration: 900,
