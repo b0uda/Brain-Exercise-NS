@@ -23,7 +23,7 @@
 
 
       <GridLayout columns="*,*,*,*" rows="*">
-        <Image class="ansr_img" #answerImg0 (tap)="nextQuestion(0)" col="0" stretch="fill" row="0" class="panel_answer" src="res://answer0"></Image>
+        <Image #answerImg0 (tap)="nextQuestion(0)" col="0" stretch="fill" row="0" class="panel_answer" src="res://answer0"></Image>
         <Label #answerLabel0 [text]="questionCurrent.choices[0]" class="answer_label" col="0" row="0" text="A" textWrap="true"></Label>
 
         <Image #answerImg1 (tap)="nextQuestion(1)" class="answer_img answer_img_1" col="1" stretch="fill" row="0" class="panel_answer"

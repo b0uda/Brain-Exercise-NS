@@ -436,8 +436,8 @@ export class PlayComponent implements OnInit {
       }, 1200);
 
       console.log(`index : ${this.questionIndex}  lenght: ${this.questions.length}`);
-      if (this.questionIndex >= this.questions.length - 1) {
-
+      // if (this.questionIndex >= this.questions.length - 1) {
+      if (this.questionIndex >= 3) {
         // this.routerExtensions.navigate(['/score'])
         this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
       }

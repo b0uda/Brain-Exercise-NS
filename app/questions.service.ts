@@ -286,13 +286,6 @@ export class QuestionsService {
       a: 1,
       rate: 0,
       hint: "Au"
-    }, {
-      id: 40,
-      q: "What is the chemical symbol for Iron?",
-      choices: ["Ir", "I", "F", "Fe"],
-      a: 3,
-      rate: 0,
-      hint: "Fe"
     }
   ];
 
@@ -607,18 +600,19 @@ export class QuestionsService {
       a: 0,
       rate: 0,
       hint: "Mars"
-    }, {
-      id: 40,
-      q: "Which ocean separates North America from Europe?",
-      choices: ["Indian", "Arctic", "Pacific", "Atlantic"],
-      a: 3,
-      rate: 0,
-      hint: "Atlantic"
     }
 
   ];
 
   geoQuestions: Array<IQuestion> = [
+    {
+      id: 24,
+      q: "In the fairytale of Cinderella, what does Cinderella leave behind at the ball?",
+      choices: ["Glass slipper", "Sandal slipper", "Closed back", "Slip on"],
+      a: 0,
+      rate: 0,
+      hint: "Glass slipper"
+    },
     {
       id: 0,
       q: "Which country is Paris the capital of?",
@@ -939,14 +933,6 @@ export class QuestionsService {
       a: 0,
       rate: 0,
       hint: "Desert"
-    },
-    {
-      id: 40,
-      q: "Which country has the largest population in the world?",
-      choices: ["India", "United States", "Japan", "China"],
-      a: 3,
-      rate: 0,
-      hint: "China"
     }
   ];
 
