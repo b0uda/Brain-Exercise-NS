@@ -8,11 +8,291 @@ export class QuestionsService {
   scienceQuestions: Array<IQuestion> = [
     {
       id: 0,
-      q: "A B C ? E",
-      choices: ["R", "P", "D", "X"],
+      q: "How many teeth should an adult have including their wisdom teeth?",
+      choices: ["32", "34", "33", "28"],
+      a: 0,
+      rate: 0,
+      hint: "32"
+    }, {
+      id: 1,
+      q: "What is the name of the organ that we use to breath in oxygen?",
+      choices: ["Kidneys", "Lungs", "Stomach", "Liver"],
+      a: 1,
+      rate: 0,
+      hint: "Lungs"
+    }, {
+      id: 2,
+      q: "What is the name of the organ that pumps blood around the body?",
+      choices: ["Prostate", "Arteries", "Veins", "Heart"],
+      a: 3,
+      rate: 0,
+      hint: "Heart"
+    }, {
+      id: 3,
+      q: "What makes up 80% of our brains?",
+      choices: ["Water", "Carbon", "Calcium", "Sodium"],
+      a: 0,
+      rate: 0,
+      hint: "Water"
+    }, {
+      id: 4,
+      q: "Where is the smallest bone in your body?",
+      choices: ["Nose", "Ears", "Hands", "Legs"],
+      a: 1,
+      rate: 0,
+      hint: "Ears"
+    }, {
+      id: 5,
+      q: "Where is the largest bone in your body?",
+      choices: ["Legs", "Hands", "Ears", "Nose"],
+      a: 0,
+      rate: 0,
+      hint: "Legs"
+    }, {
+      id: 6,
+      q: "How many ribs are there in the human body?",
+      choices: ["16", "18", "22", "24"],
+      a: 3,
+      rate: 0,
+      hint: "Twenty-four (24). Humans have 12 pairs of ribs / 24 ribs in total"
+    }, {
+      id: 7,
+      q: "What is the strongest muscle in your body?",
+      choices: ["Ears", "hands", "Tongue", "Legs"],
       a: 2,
       rate: 0,
-      hint: "Normal Alphabet Order"
+      hint: "Tongue"
+    }, {
+      id: 8,
+      q: "Which colour eyes do more humans have?",
+      choices: ["Black", "Brown", "Green", "Blue"],
+      a: 1,
+      rate: 0,
+      hint: "Brown"
+    }, {
+      id: 9,
+      q: "What is the name of the tube that carries blood to the heart?",
+      choices: ["Pancreas", "Capillaries", "Arteries", "Veins"],
+      a: 3,
+      rate: 0,
+      hint: "Vein"
+    }, {
+      id: 10,
+      q: "How many moons does planet Mars have?",
+      choices: ["1", "2", "3", "4"],
+      a: 1,
+      rate: 0,
+      hint: "Two – they are called Phobos and Deimos"
+    }, {
+      id: 11,
+      q: "Which planet is closest to the sun?",
+      choices: ["Uranus", "Venus", "Mars", "Mercury"],
+      a: 3,
+      rate: 0,
+      hint: "Mercury"
+    }, {
+      id: 12,
+      q: "What is the largest planet in our solar system?",
+      choices: ["Jupiter", "Mars", "Earth", "Neptune"],
+      a: 0,
+      rate: 0,
+      hint: "Jupiter"
+    }, {
+      id: 13,
+      q: "How many days does the Moon take to orbit the Earth?",
+      choices: ["18", "27", "25", "30"],
+      a: 1,
+      rate: 0,
+      hint: "27 days (To be exact it takes 27 days, 7 hours, 43 minutes, 11.6 seconds)"
+    }, {
+      id: 14,
+      q: "Neptune has eight moons, what is the name of the biggest one?",
+      choices: ["Despina", "Larissa", "Triton", "Naiad"],
+      a: 2,
+      rate: 0,
+      hint: "Triton"
+    }, {
+      id: 15,
+      q: "Which dwarf planet shares the same name as a famous Disney dog?",
+      choices: ["Mars", "Jupiter", "Venus", "Pluto"],
+      a: 3,
+      rate: 0,
+      hint: "Pluto"
+    }, {
+      id: 16,
+      q: "What is the name of the first man to set foot on the moon?",
+      choices: ["Neil Armstrong", "Charles Duke", "Pete Conrad", "John Young"],
+      a: 0,
+      rate: 0,
+      hint: "Neil Armstrong"
+    }, {
+      id: 17,
+      q: "How many rings does Saturn have around it?",
+      choices: ["5", "6", "7", "8"],
+      a: 2,
+      rate: 0,
+      hint: "Seven (7)"
+    }, {
+      id: 18,
+      q: "What is the closest star to the Earth?",
+      choices: ["Wolf 359", "Sun", "Sirius", "Ross 154"],
+      a: 1,
+      rate: 0,
+      hint: "The Sun"
+    }, {
+      id: 19,
+      q: "Which tree produces acorns?",
+      choices: ["Black Cherry", "Hawthorn", "Butternut", "Oak Tree"],
+      a: 3,
+      rate: 0,
+      hint: "Oak Tree"
+    }, {
+      id: 20,
+      q: "What type of flower is used by children to make a chain?",
+      choices: ["Roses", "Tulips", "Daisies", "Lotus"],
+      a: 2,
+      rate: 0,
+      hint: "Daisies"
+    }, {
+      id: 21,
+      q: "Which flower has big bright yellow petals and grows very, very tall?",
+      choices: ["Sunflower", "Daisies", "Coneflower", "Tulips"],
+      a: 0,
+      rate: 0,
+      hint: "Sunflower"
+    }, {
+      id: 22,
+      q: "What 'C' is a prickly plant that grows in the desert?",
+      choices: ["Calluna", "Cactus", "Caltha", "Cissus"],
+      a: 1,
+      rate: 0,
+      hint: "Cactus"
+    }, {
+      id: 23,
+      q: "What type of gas is provided by trees and helps us to breathe?",
+      choices: ["Oxygen", "Hydrogen", "Nitrogen", "Sulfur"],
+      a: 0,
+      rate: 0,
+      hint: "Oxygen"
+    }, {
+      id: 24,
+      q: "Which type of Japanese tree is very small and grown in a pot?",
+      choices: ["Cherry", "Kanzan", "Prunus", "Bonsai"],
+      a: 3,
+      rate: 0,
+      hint: "Bonsai"
+    }, {
+      id: 25,
+      q: "What type of substance is produced by flowers and sometimes causes hay fever?",
+      choices: ["Nitrogen", "Pollen", "Hydrogen", "Sulfur"],
+      a: 1,
+      rate: 0,
+      hint: "Pollen"
+    }, {
+      id: 26,
+      q: "What type of red flower do people often give one another on Valentine's Day?",
+      choices: ["Red Roses", "Cardinal", "Poppy", "Red carnation"],
+      a: 0,
+      rate: 0,
+      hint: "Red Roses"
+    }, {
+      id: 27,
+      q: "Besides light, what do trees and flowers require to grow?",
+      choices: ["Pollen", "Oxygen", "Water", "Vitamine"],
+      a: 2,
+      rate: 0,
+      hint: "Water"
+    }, {
+      id: 28,
+      q: "What type of system circulates blood around the body?",
+      choices: ["Digestive", "Respiratory", "Circularity", "Nervous"],
+      a: 2,
+      rate: 0,
+      hint: "Circularity System"
+    }, {
+      id: 29,
+      q: "Which of the following is not a type of tooth?",
+      choices: ["Incisor", "Retina", "Molar", "Canine"],
+      a: 1,
+      rate: 0,
+      hint: "Retina"
+    }, {
+      id: 30,
+      q: "What part of the human skeleton protects the brain?",
+      choices: ["Rib cage", "Pelvis", "Skull", "Earlobe"],
+      a: 2,
+      rate: 0,
+      hint: "Skull"
+    }, {
+      id: 31,
+      q: "What colour is a Ruby gemstone?",
+      choices: ["Red", "Orange", "Cyan", "Green"],
+      a: 0,
+      rate: 0,
+      hint: "Red"
+    }, {
+      id: 32,
+      q: "What is the chemical symbol for oxygen?",
+      choices: ["Ox", "O", "X", "Oc"],
+      a: 1,
+      rate: 0,
+      hint: "O"
+    }, {
+      id: 33,
+      q: "Which human body system breaks down food?",
+      choices: ["Circulatory", "Nervous", "Respiratory", "Digestive"],
+      a: 3,
+      rate: 0,
+      hint: "Digestive system"
+    }, {
+      id: 34,
+      q: "Who created the famous equation: E = mc2?",
+      choices: ["Thomas Edison", "Marie Curie", "Stephen Hawking", "Albert Einstein"],
+      a: 3,
+      rate: 0,
+      hint: "Albert Einstein"
+    }, {
+      id: 35,
+      q: "Which planet is the smallest?",
+      choices: ["Neptune", "Jupiter", "Mars", "Mercury"],
+      a: 3,
+      rate: 0,
+      hint: "Mercury"
+    }, {
+      id: 36,
+      q: "Which planet is furthest from the Sun?",
+      choices: ["Neptune", "Mars", "Mercury", "Jupiter"],
+      a: 0,
+      rate: 0,
+      hint: "Neptune"
+    }, {
+      id: 37,
+      q: "How many inner planets are there in our solar system?",
+      choices: ["3", "2", "4", "5"],
+      a: 2,
+      rate: 0,
+      hint: "Four: Mercury, Venus, Earth, Mars"
+    }, {
+      id: 38,
+      q: "What is the chemical symbol for Sodium?",
+      choices: ["Na", "S", "So", "N"],
+      a: 0,
+      rate: 0,
+      hint: "Na"
+    }, {
+      id: 39,
+      q: "What is the chemical symbol for Gold?",
+      choices: ["Go", "Au", "G", "A"],
+      a: 1,
+      rate: 0,
+      hint: "Au"
+    }, {
+      id: 40,
+      q: "What is the chemical symbol for Iron?",
+      choices: ["Ir", "I", "F", "Fe"],
+      a: 3,
+      rate: 0,
+      hint: "Fe"
     }
   ];
 
