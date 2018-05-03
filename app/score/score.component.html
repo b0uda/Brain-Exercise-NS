@@ -1,5 +1,5 @@
 <StackLayout #stackLayout>
-  <Label class="score text-right" textWrap="true" [text]="score"></Label>
+  <Label class="score text-right" textWrap="true" [text]="'You have ' + score + ' good answers'"></Label>
 
   <StackLayout class="container_btn" orientation="horizontal">
     <Image src="res://score_correction" class="mode_correction" (tap)="result()"></Image>

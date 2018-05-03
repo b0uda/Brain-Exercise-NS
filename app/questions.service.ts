@@ -605,14 +605,7 @@ export class QuestionsService {
   ];
 
   geoQuestions: Array<IQuestion> = [
-    {
-      id: 24,
-      q: "In the fairytale of Cinderella, what does Cinderella leave behind at the ball?",
-      choices: ["Glass slipper", "Sandal slipper", "Closed back", "Slip on"],
-      a: 0,
-      rate: 0,
-      hint: "Glass slipper"
-    },
+
     {
       id: 0,
       q: "Which country is Paris the capital of?",

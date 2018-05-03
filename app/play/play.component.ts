@@ -134,6 +134,13 @@ export class PlayComponent implements OnInit {
 
   nextCorrection() {
     this.questionIndex++;
+
+    // go home after end of correction
+    if (this.questionIndex >= this.questions.length) {
+      // this.routerExtensions.navigate(['/score'])
+      this.routerExtensions.navigate(["home"], { clearHistory: true });
+    }
+
     this.questionCurrent = this.questions[this.questionIndex];
 
     this.animateQuestionIndicator();
@@ -148,6 +155,8 @@ export class PlayComponent implements OnInit {
     // switch the player answer for first question "need to be on ngInit()"
 
     this.testPlayerAnswer();
+
+
 
   }
 
