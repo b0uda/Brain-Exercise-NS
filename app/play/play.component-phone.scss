@@ -3,32 +3,44 @@
 }
 
 .phone .panel_question {
-    height: 55%;
-}
-
-.phone .question_text {
-    font-size: 20;
-}
-
-.phone .panel_answer {
     height: 40%;
 }
 
+.phone .question_text {
+    font-size: 22;
+}
+
+.phone .panel_answer {
+    height: 50%;
+    margin-top: 60%;
+}
+
 .phone .answer_label {
-    font-size: 20;
+    font-size: 19;
+    margin-top: 88%;
+}
+
+.phone .answer_label_correct {
+    margin-top: 88%;
+    font-size: 28;
+}
+
+.phone .answer_label_incorrect {
+    margin-top: 88%;
+    font-size: 28;
 }
 
 .phone .next {
-    margin-top: 20%;
+    margin-bottom: 5%;
 }
 
 .phone .solution_girl {
-    margin-top: 50%;
+    margin-top: 35%;
 }
 
 .phone .question_explanation {
-    font-size: 14;
-    margin-top: 45%;
+    font-size: 22;
+    margin-top: 40%;
 }
 
 .phone .explain {

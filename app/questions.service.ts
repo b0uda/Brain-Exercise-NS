@@ -739,7 +739,7 @@ export class QuestionsService {
     {
       id: 16,
       q: "What is the name of the active volcano in Sicily?",
-      choices: ["Ischia", "Mount Etna", "Filicudi", "Panarea"],
+      choices: ["Ischia", "MountEtna", "Filicudi", "Panarea"],
       a: 1,
       rate: 0,
       hint: "Mount Etna"
