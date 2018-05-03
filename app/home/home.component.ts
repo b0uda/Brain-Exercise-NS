@@ -93,14 +93,12 @@ export class HomeComponent implements OnInit {
   orientationChangedCallback(args) {
     if (args.landscape) {
       // Do something landscap-y
-      console.log("landscape");
-
       return;
     }
 
     // Do something portrait-y
     // Assume this includes updating boundProperty on this module's scope
-    console.log("portrait");
+
 
   }
 
@@ -108,7 +106,7 @@ export class HomeComponent implements OnInit {
     const _deviceType = platformModule.device.deviceType;
     const _gridLayout = <GridLayout>this.gridLayout.nativeElement;
     _gridLayout.className = _deviceType.toLowerCase();
-    console.log(_deviceType);
+
 
     this.stackBtn = <StackLayout>this.containerBtn.nativeElement;
 

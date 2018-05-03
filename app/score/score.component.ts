@@ -39,8 +39,6 @@ export class ScoreComponent implements OnInit {
         this.score = params.score;
         this.mode = params.mode;
       });
-
-    console.log(questionsService.playerAnswers);
   }
 
   home() {
@@ -67,7 +65,7 @@ export class ScoreComponent implements OnInit {
     const _deviceType = platformModule.device.deviceType;
     const _stackLayout = <StackLayout>this.stackLayout.nativeElement;
     _stackLayout.className = _deviceType.toLowerCase();
-    console.log(_deviceType);
+
 
   }
 
