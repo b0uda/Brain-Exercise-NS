@@ -24,7 +24,6 @@ import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/an
 
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { HomeComponent } from "../home/home.component";
-import { ResultDialogComponent } from "../result-dialog/result-dialog.component";
 
 import { ActivatedRoute, Router } from "@angular/router";
 

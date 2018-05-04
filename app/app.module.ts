@@ -5,7 +5,6 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { PlayComponent } from "./play/play.component";
 import { QuestionsService } from "./questions.service";
-import { ResultDialogComponent } from "./result-dialog/result-dialog.component";
 
 import { FormsModule } from "@angular/forms";
 
@@ -25,7 +24,6 @@ import { ScoreComponent } from "./score/score.component";
         AppComponent,
         HomeComponent,
         PlayComponent,
-        ResultDialogComponent,
         ScoreComponent
 
     ],
