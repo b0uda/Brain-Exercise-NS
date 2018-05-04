@@ -6,7 +6,8 @@ Feel free to customize layouts and components to change how the tab view looks.
 
 <!-- Buttons -->
 
-<FlexBoxLayout #gridLayout class="page page-content" justifyContent="center" alignItems="flex-end" #containerBtn class="mode_container">
+<FlexBoxLayout #gridLayout class="page page-content" (loaded)="loadBanner()" justifyContent="center" alignItems="flex-end"
+    #containerBtn class="mode_container">
 
     <Image #alphabet class="mode" (tap)="startGeo()" src="res://geography"></Image>
     <Image #number class="mode" (tap)="startGeneral()" src="res://general"></Image>

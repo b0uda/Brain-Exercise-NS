@@ -12,6 +12,8 @@ import { Image } from "tns-core-modules/ui/image/image";
 
 const orientation = require("nativescript-orientation");
 
+var admob = require("nativescript-admob");
+
 @Component({
   moduleId: module.id,
   selector: "app-home",
@@ -95,6 +97,37 @@ export class HomeComponent implements OnInit {
     // Do something portrait-y
     // Assume this includes updating boundProperty on this module's scope
 
+
+  }
+
+
+  loadBanner() {
+    setTimeout(() => {
+      // Banner
+      admob.createBanner({
+        // if this 'view' property is not set, the banner is overlayed on the current top most view
+        // view: "FlexBoxLayout",
+        testing: true, // set to false to get real banners
+        size: admob.AD_SIZE.SMART_BANNER, // anything in admob.AD_SIZE, like admob.AD_SIZE.SMART_BANNER
+        iosBannerId: "ca-app-pub-XXXXXX/YYYYYY", // add your own
+        androidBannerId: "ca-app-pub-3940256099942544/6300978111", // add your own
+        // Android automatically adds the connected device as test device with testing:true, iOS does not
+        iosTestDeviceIds: ["yourTestDeviceUDIDs", "canBeAddedHere"],
+        margins: {
+          // if both are set, top wins
+          top: 100
+          // bottom: 50
+        },
+        keywords: ["keyword1", "keyword2"] // add keywords for ad targeting
+      }).then(
+        () => {
+          console.log("admob createBanner done");
+        },
+        (error) => {
+          console.log("admob createBanner error: " + error);
+        }
+      );
+    }, 500);
 
   }
 
