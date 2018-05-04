@@ -9,26 +9,17 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { Image } from "ui/image";
 import { Label } from "ui/label";
 import { GridLayout } from "ui/layouts/grid-layout";
-// import { Page, Point } from "ui/page";
-
-// import * as dialogs from "ui/dialogs";
 
 import { EventData } from "data/observable";
 import { IAnswer, IQuestion, QuestionsService } from "../questions.service";
 
 import { AnimationCurve } from "ui/enums";
-
-// import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/animation";
-
 import { HomeComponent } from "../home/home.component";
 
 import { ActivatedRoute, Router } from "@angular/router";
-
 import * as application from "application";
 
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "application";
-
-// const tnsfx = require("nativescript-effects");
 
 const orientation = require("nativescript-orientation");
 
