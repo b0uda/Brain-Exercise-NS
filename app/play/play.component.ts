@@ -1,26 +1,24 @@
-import { Component, ElementRef, Input, NgModule, OnInit, NgZone, ViewContainerRef, ViewChild } from "@angular/core";
-import * as elementRegistryModule from "nativescript-angular/element-registry";
+import { Component, ElementRef, Input, OnInit, NgModule, NgZone, ViewChild, ViewContainerRef } from "@angular/core";
+
 import * as platformModule from "tns-core-modules/platform";
 
-import { isAndroid, screen } from "platform";
+import { isAndroid } from "platform";
 
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { Image } from "ui/image";
 import { Label } from "ui/label";
 import { GridLayout } from "ui/layouts/grid-layout";
-import { Page, Point } from "ui/page";
+// import { Page, Point } from "ui/page";
 
-import * as dialogs from "ui/dialogs";
+// import * as dialogs from "ui/dialogs";
 
 import { EventData } from "data/observable";
 import { IAnswer, IQuestion, QuestionsService } from "../questions.service";
 
-import { GestureEventData, GestureTypes } from "ui/gestures";
-
 import { AnimationCurve } from "ui/enums";
 
-import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/animation";
+// import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/animation";
 
 import { HomeComponent } from "../home/home.component";
 
@@ -30,7 +28,7 @@ import * as application from "application";
 
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "application";
 
-const tnsfx = require("nativescript-effects");
+// const tnsfx = require("nativescript-effects");
 
 const orientation = require("nativescript-orientation");
 
@@ -419,8 +417,8 @@ export class PlayComponent implements OnInit {
       });
 
       // }, 1200);
-      // if (this.questionIndex >= this.questions.length - 1) {
-      if (this.questionIndex >= 2) {
+      if (this.questionIndex >= this.questions.length - 1) {
+        // if (this.questionIndex >= 2) {
         // this.routerExtensions.navigate(['/score'])
         this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
       }
