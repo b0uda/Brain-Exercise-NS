@@ -23,6 +23,8 @@ import { AndroidApplication, AndroidActivityBackPressedEventData } from "applica
 
 const orientation = require("nativescript-orientation");
 
+var admob = require("nativescript-admob");
+
 @Component({
   moduleId: module.id,
   selector: "app-play",
@@ -313,6 +315,8 @@ export class PlayComponent implements OnInit {
 
   nextQuestion(answer: number): void {
 
+
+
     // todo1
     // this.playwerAnswerTemp = { id: this.questionIndex, question: this.questionCurrent, playerAnswer: answer };
     // this.playerAnswers.push(this.playwerAnswerTemp);
@@ -414,6 +418,26 @@ export class PlayComponent implements OnInit {
         this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
       }
 
+      // adds intertisiel
+      if (this.questionIndex === 8 || this.questionIndex === 18
+        || this.questionIndex === 28 || this.questionIndex === 38) {
+        admob.createInterstitial({
+          testing: true,
+          iosInterstitialId: "ca-app-pub-XXXXXX/YYYYY2", // add your own
+          androidInterstitialId: "ca-app-pub-3940256099942544/1033173712", // add your own
+          // Android automatically adds the connected device as test device with testing:true, iOS does not
+          iosTestDeviceIds: ["ce97330130c9047ce0d4430d37d713b2"],
+          keywords: ["keyword1", "keyword2"] // add keywords for ad targeting
+        }).then(
+          () => {
+            console.log("admob createInterstitial done");
+          },
+          (error) => {
+            console.log("admob createInterstitial error: " + error);
+          }
+        );
+      }
+
     } else {
 
       // todo questions finished
@@ -501,6 +525,37 @@ export class PlayComponent implements OnInit {
       this.answerI2.className = "panel_answer";
       this.answerL2.className = "answer_label";
     }, 1200);
+  }
+
+
+  loadBanner() {
+    setTimeout(() => {
+      // Banner
+      admob.createBanner({
+        // if this 'view' property is not set, the banner is overlayed on the current top most view
+        // view: "FlexBoxLayout",
+        testing: true, // set to false to get real banners
+        size: admob.AD_SIZE.SMART_BANNER, // anything in admob.AD_SIZE, like admob.AD_SIZE.SMART_BANNER
+        iosBannerId: "ca-app-pub-XXXXXX/YYYYYY", // add your own
+        androidBannerId: "ca-app-pub-3940256099942544/6300978111", // add your own
+        // Android automatically adds the connected device as test device with testing:true, iOS does not
+        iosTestDeviceIds: ["yourTestDeviceUDIDs", "canBeAddedHere"],
+        margins: {
+          // if both are set, top wins
+          top: 50
+          // bottom: 50
+        },
+        keywords: ["keyword1", "keyword2"] // add keywords for ad targeting
+      }).then(
+        () => {
+          console.log("admob createBanner done");
+        },
+        (error) => {
+          console.log("admob createBanner error: " + error);
+        }
+      );
+    }, 500);
+
   }
 
 }
