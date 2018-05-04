@@ -419,8 +419,8 @@ export class PlayComponent implements OnInit {
       });
 
       // }, 1200);
-      if (this.questionIndex >= this.questions.length - 1) {
-        // if (this.questionIndex >= 3) {
+      // if (this.questionIndex >= this.questions.length - 1) {
+      if (this.questionIndex >= 2) {
         // this.routerExtensions.navigate(['/score'])
         this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
       }
