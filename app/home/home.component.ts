@@ -5,13 +5,10 @@ import * as platformModule from "tns-core-modules/platform";
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { GridLayout } from "ui/layouts/grid-layout";
-import { StackLayout } from "ui/layouts/stack-layout";
 
 import { EventData } from "tns-core-modules/ui/page/page";
 
 import { Image } from "tns-core-modules/ui/image/image";
-
-elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
 
 const orientation = require("nativescript-orientation");
 
@@ -23,7 +20,6 @@ const orientation = require("nativescript-orientation");
 })
 export class HomeComponent implements OnInit {
   @ViewChild("gridLayout") gridLayout: ElementRef;
-  @ViewChild("containerBtn") containerBtn: ElementRef;
   @ViewChild("alphabet") alphabetRef: ElementRef;
   @ViewChild("number") numberRef: ElementRef;
   @ViewChild("symbol") symbolRef: ElementRef;
@@ -42,7 +38,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.alphabet.className = "mode";
       this.routerExtensions.navigate(["/play", false, "geo"], {
-        clearHistory: true,
+        clearHistory: false,
         transition: {
           name: "fade",
           duration: 900,
@@ -60,7 +56,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.number.className = "mode";
       this.routerExtensions.navigate(["/play", false, "general"], {
-        clearHistory: true,
+        clearHistory: false,
         transition: {
           name: "fade",
           duration: 900,
@@ -78,7 +74,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.number.className = "mode";
       this.routerExtensions.navigate(["/play", false, "science"], {
-        clearHistory: true,
+        clearHistory: false,
         transition: {
           name: "fade",
           duration: 900,
@@ -106,9 +102,6 @@ export class HomeComponent implements OnInit {
     const _deviceType = platformModule.device.deviceType;
     const _gridLayout = <GridLayout>this.gridLayout.nativeElement;
     _gridLayout.className = _deviceType.toLowerCase();
-
-
-    this.stackBtn = <StackLayout>this.containerBtn.nativeElement;
 
     this.alphabet = <Image>this.alphabetRef.nativeElement;
     this.number = <Image>this.numberRef.nativeElement;

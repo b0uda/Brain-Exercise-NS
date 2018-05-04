@@ -8,7 +8,6 @@ import { QuestionsService } from "./questions.service";
 
 import { FormsModule } from "@angular/forms";
 
-import { ModalDialogService } from "nativescript-angular/modal-dialog";
 import { ScoreComponent } from "./score/score.component";
 
 @NgModule({
@@ -28,8 +27,7 @@ import { ScoreComponent } from "./score/score.component";
 
     ],
     providers: [
-        QuestionsService,
-        ModalDialogService
+        QuestionsService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
