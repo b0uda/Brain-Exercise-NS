@@ -22,7 +22,6 @@ import { AnimationCurve } from "ui/enums";
 
 import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation/animation";
 
-import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { HomeComponent } from "../home/home.component";
 
 import { ActivatedRoute, Router } from "@angular/router";
@@ -77,7 +76,6 @@ export class PlayComponent implements OnInit {
   playerAnswer: number;
 
   constructor(
-    private modalService: ModalDialogService,
     private viewContainerRef: ViewContainerRef,
     private ngZone: NgZone,
     private route: ActivatedRoute,
@@ -362,7 +360,7 @@ export class PlayComponent implements OnInit {
     // Change Question Information after end of animation
     setTimeout(() => {
       this.nextQuestionLogic(answer);
-    }, 1000);
+    }, 1200);
 
     this._questionLabel.animate({
       opacity: 0,
@@ -438,7 +436,6 @@ export class PlayComponent implements OnInit {
 
   animateAnswer0() {
     this.answerI0.className = "panel_answer animate_bigger";
-
     this.answerI1.className = "panel_answer animate_smaller";
     this.answerL1.className = "answer_label animate_smaller";
     this.answerI2.className = "panel_answer animate_smaller";
@@ -460,7 +457,6 @@ export class PlayComponent implements OnInit {
 
   animateAnswer1() {
     this.answerI1.className = "panel_answer animate_bigger";
-
     this.answerI0.className = "panel_answer animate_smaller";
     this.answerL0.className = "answer_label animate_smaller";
     this.answerI2.className = "panel_answer animate_smaller";
@@ -469,7 +465,6 @@ export class PlayComponent implements OnInit {
     this.answerL3.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerI1.className = "panel_answer";
-
       this.answerI0.className = "panel_answer";
       this.answerL0.className = "answer_label";
       this.answerI2.className = "panel_answer";
@@ -482,7 +477,6 @@ export class PlayComponent implements OnInit {
 
   animateAnswer2() {
     this.answerI2.className = "panel_answer animate_bigger";
-
     this.answerI0.className = "panel_answer animate_smaller";
     this.answerL0.className = "answer_label animate_smaller";
     this.answerI1.className = "panel_answer animate_smaller";
@@ -491,7 +485,6 @@ export class PlayComponent implements OnInit {
     this.answerL3.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerI2.className = "panel_answer";
-
       this.answerI0.className = "panel_answer";
       this.answerL0.className = "answer_label";
       this.answerI1.className = "panel_answer";
@@ -504,7 +497,6 @@ export class PlayComponent implements OnInit {
 
   animateAnswer3() {
     this.answerI3.className = "panel_answer animate_bigger";
-
     this.answerI0.className = "panel_answer animate_smaller";
     this.answerL0.className = "answer_label animate_smaller";
     this.answerI1.className = "panel_answer animate_smaller";
@@ -513,7 +505,6 @@ export class PlayComponent implements OnInit {
     this.answerL2.className = "answer_label animate_smaller";
     setTimeout(() => {
       this.answerI3.className = "panel_answer";
-
       this.answerI0.className = "panel_answer";
       this.answerL0.className = "answer_label";
       this.answerI1.className = "panel_answer";
