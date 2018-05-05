@@ -1,5 +1,5 @@
 <page loaded="pageLoaded">
-  <GridLayout #gridLayout (loaded)="loadBanner()" class="page page-content">
+  <GridLayout #gridLayout class="page page-content">
 
     <Image *ngIf="correction === 'true'" class="next" (tap)="nextCorrection()" src="res://next"></Image>
     <Label class="question_number text-right" [text]="questionIndicator" textWrap="true"></Label>

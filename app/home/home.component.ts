@@ -101,7 +101,19 @@ export class HomeComponent implements OnInit {
   }
 
 
-  loadBanner() {
+  ngOnInit() {
+    const _deviceType = platformModule.device.deviceType;
+    const _gridLayout = <GridLayout>this.gridLayout.nativeElement;
+    _gridLayout.className = _deviceType.toLowerCase();
+
+    this.alphabet = <Image>this.alphabetRef.nativeElement;
+    this.number = <Image>this.numberRef.nativeElement;
+    this.symbol = <Image>this.symbolRef.nativeElement;
+
+    orientation.addOrientationApplier(this.orientationChangedCallback.bind(this));
+    orientation.setOrientation("portrait");
+    orientation.disableRotation();
+
     setTimeout(() => {
       // Banner
       admob.createBanner({
@@ -128,21 +140,6 @@ export class HomeComponent implements OnInit {
         }
       );
     }, 500);
-
-  }
-
-  ngOnInit() {
-    const _deviceType = platformModule.device.deviceType;
-    const _gridLayout = <GridLayout>this.gridLayout.nativeElement;
-    _gridLayout.className = _deviceType.toLowerCase();
-
-    this.alphabet = <Image>this.alphabetRef.nativeElement;
-    this.number = <Image>this.numberRef.nativeElement;
-    this.symbol = <Image>this.symbolRef.nativeElement;
-
-    orientation.addOrientationApplier(this.orientationChangedCallback.bind(this));
-    orientation.setOrientation("portrait");
-    orientation.disableRotation();
 
   }
 

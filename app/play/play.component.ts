@@ -95,7 +95,7 @@ export class PlayComponent implements OnInit {
         break;
     }
 
-    this.questionIndex = 0;
+    this.questionIndex = 35;
     this.questionCurrent = this.questions[0];
     this.score = 0;
     this.questionIndicator = `Question ${this.questionIndex + 1}`;
@@ -306,6 +306,33 @@ export class PlayComponent implements OnInit {
       this.testPlayerAnswer();
     }
 
+    setTimeout(() => {
+      // Banner
+      admob.createBanner({
+        // if this 'view' property is not set, the banner is overlayed on the current top most view
+        // view: "FlexBoxLayout",
+        testing: true, // set to false to get real banners
+        size: admob.AD_SIZE.SMART_BANNER, // anything in admob.AD_SIZE, like admob.AD_SIZE.SMART_BANNER
+        iosBannerId: "ca-app-pub-XXXXXX/YYYYYY", // add your own
+        androidBannerId: "ca-app-pub-3940256099942544/6300978111", // add your own
+        // Android automatically adds the connected device as test device with testing:true, iOS does not
+        iosTestDeviceIds: ["yourTestDeviceUDIDs", "canBeAddedHere"],
+        margins: {
+          // if both are set, top wins
+          top: 50
+          // bottom: 50
+        },
+        keywords: ["keyword1", "keyword2"] // add keywords for ad targeting
+      }).then(
+        () => {
+          console.log("admob createBanner done");
+        },
+        (error) => {
+          console.log("admob createBanner error: " + error);
+        }
+      );
+    }, 500);
+
     // this.playerAnswers[this.questionIndex].playerAnswer
   }
 
@@ -412,7 +439,7 @@ export class PlayComponent implements OnInit {
       });
 
       // }, 1200);
-      if (this.questionIndex >= this.questions.length - 1) {
+      if (this.questionIndex > this.questions.length - 1) {
         // if (this.questionIndex >= 2) {
         // this.routerExtensions.navigate(['/score'])
         this.routerExtensions.navigateByUrl(`/score/${this.score}/${this.mode}`, { clearHistory: true });
@@ -420,7 +447,7 @@ export class PlayComponent implements OnInit {
 
       // adds intertisiel
       if (this.questionIndex === 8 || this.questionIndex === 18
-        || this.questionIndex === 28 || this.questionIndex === 38) {
+        || this.questionIndex === 28 || this.questionIndex === 37) {
         admob.createInterstitial({
           testing: true,
           iosInterstitialId: "ca-app-pub-XXXXXX/YYYYY2", // add your own
@@ -528,34 +555,5 @@ export class PlayComponent implements OnInit {
   }
 
 
-  loadBanner() {
-    setTimeout(() => {
-      // Banner
-      admob.createBanner({
-        // if this 'view' property is not set, the banner is overlayed on the current top most view
-        // view: "FlexBoxLayout",
-        testing: true, // set to false to get real banners
-        size: admob.AD_SIZE.SMART_BANNER, // anything in admob.AD_SIZE, like admob.AD_SIZE.SMART_BANNER
-        iosBannerId: "ca-app-pub-XXXXXX/YYYYYY", // add your own
-        androidBannerId: "ca-app-pub-3940256099942544/6300978111", // add your own
-        // Android automatically adds the connected device as test device with testing:true, iOS does not
-        iosTestDeviceIds: ["yourTestDeviceUDIDs", "canBeAddedHere"],
-        margins: {
-          // if both are set, top wins
-          top: 50
-          // bottom: 50
-        },
-        keywords: ["keyword1", "keyword2"] // add keywords for ad targeting
-      }).then(
-        () => {
-          console.log("admob createBanner done");
-        },
-        (error) => {
-          console.log("admob createBanner error: " + error);
-        }
-      );
-    }, 500);
-
-  }
 
 }
