@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "play/:correction/:mode", component: PlayComponent },
     { path: "score/:score/:mode", component: ScoreComponent },
-    { path: "", redirectTo: "play/false/geo", pathMatch: "full" },
+    { path: "", redirectTo: "home", pathMatch: "full" },
     { path: "tabs", loadChildren: "./tabs/tabs.module#TabsModule" }
 ];
 

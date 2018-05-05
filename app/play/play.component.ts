@@ -95,7 +95,7 @@ export class PlayComponent implements OnInit {
         break;
     }
 
-    this.questionIndex = 35;
+    this.questionIndex = 0;
     this.questionCurrent = this.questions[0];
     this.score = 0;
     this.questionIndicator = `Question ${this.questionIndex + 1}`;
@@ -331,7 +331,7 @@ export class PlayComponent implements OnInit {
           console.log("admob createBanner error: " + error);
         }
       );
-    }, 500);
+    }, 1000);
 
     // this.playerAnswers[this.questionIndex].playerAnswer
   }

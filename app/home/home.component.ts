@@ -97,9 +97,7 @@ export class HomeComponent implements OnInit {
     // Do something portrait-y
     // Assume this includes updating boundProperty on this module's scope
 
-
   }
-
 
   ngOnInit() {
     const _deviceType = platformModule.device.deviceType;
@@ -139,7 +137,7 @@ export class HomeComponent implements OnInit {
           console.log("admob createBanner error: " + error);
         }
       );
-    }, 500);
+    }, 1000);
 
   }
 
